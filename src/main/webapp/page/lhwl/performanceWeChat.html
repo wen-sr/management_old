@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工资查询</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../../easyui/themes/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../easyui/themes/mobile.css">
+    <link rel="stylesheet" type="text/css" href="../../easyui/themes/icon.css">
+    <script type="text/javascript" src="../../easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="../../easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../easyui/jquery.easyui.mobile.js"></script>
+    <script type="text/javascript" src="../../easyui/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<div class="easyui-navpanel" id="d1" style="padding:20px">
+    <header>
+        <div class="m-toolbar">
+            <div class="m-left">
+                <img src="../../image/logo.png" style="width: 45%;height: 32px">
+            </div>
+            <div class="m-title" style="color:#3DA0DB">工资查询</div>
+        </div>
+    </header>
+    <form id="ff">
+        <div style="margin-bottom:10px">
+            <input id="begin" class="easyui-datebox" label="开始时间:" prompt="开始时间" data-options="editable:false,panelWidth:220,panelHeight:240,iconWidth:30" style="width:100%">
+        </div>
+        <div style="margin-bottom:10px">
+            <input id="end" class="easyui-datebox" label="结束时间:" prompt="结束时间" data-options="editable:false,panelWidth:220,panelHeight:240,iconWidth:30" style="width:100%">
+        </div>
+        <div style="margin-bottom:10px">
+            <input id="pwd" class="easyui-passwordbox" style="width:100%;height:32px;"label="口令:" prompt="口令" data-options="buttonText:'<span style=\'padding:0 15px\'; id=\'editPwd\'>修改口令</span>'">
+        </div>
+        <div style="text-align:center;margin-top:30px">
+            <a id="go" href="#" class="easyui-linkbutton" style="width:100%;height:40px"><span style="font-size:16px">查询</span></a>
+        </div>
+    </form>
+</div>
+
+<!--修改口令窗口-->
+<div id="w" class="easyui-window" data-options="closed:true" title="修改口令" collapsible="false" minimizable="false"
+     maximizable="false" icon="icon-save" style="width: 300px; height: 200px; padding: 5px;
+        background: #fafafa;">
+    <div class="easyui-layout" fit="true">
+        <div region="center" border="false" style="padding: 10px;background: #fff; border: 1px solid #ccc;">
+            <table cellpadding=3>
+                <tr>
+                    <td>原口令：</td>
+                    <td><input id="txtOldPass" type="Password" class="txt01"/></td>
+                </tr>
+                <tr>
+                    <td>新口令：</td>
+                    <td><input id="txtNewPass" type="Password" class="txt01"/></td>
+                </tr>
+                <tr>
+                    <td>确认口令：</td>
+                    <td><input id="txtRePass" type="Password" class="txt01"/></td>
+                </tr>
+            </table>
+        </div>
+        <div region="south" border="false" style="text-align: center; height: 30px; line-height: 30px;">
+            <a id="btnEp" class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">
+                确定</a> <a id="btnCancel" class="easyui-linkbutton" icon="icon-cancel" href="javascript:void(0)">取消</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="performanceWeChat.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.management.device.dao.DeviceTransMapper">
+  <resultMap id="BaseResultMap" type="com.management.device.pojo.DeviceTrans">
+    <constructor>
+      <idArg column="ID" javaType="java.lang.Long" jdbcType="NUMERIC" />
+      <arg column="DEVICE_ID" javaType="java.lang.String" jdbcType="NVARCHAR" />
+      <arg column="ORGANIZATION_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="USER_ID" javaType="java.lang.String" jdbcType="NVARCHAR" />
+      <arg column="STATUS" javaType="java.lang.String" jdbcType="NVARCHAR" />
+      <arg column="ADDWHO" javaType="java.lang.String" jdbcType="NVARCHAR" />
+      <arg column="ADDDATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="EDITWHO" javaType="java.lang.String" jdbcType="NVARCHAR" />
+      <arg column="EDITDATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="BK1" javaType="java.lang.String" jdbcType="NVARCHAR" />
+      <arg column="BK2" javaType="java.lang.String" jdbcType="NVARCHAR" />
+      <arg column="BK3" javaType="java.lang.String" jdbcType="NVARCHAR" />
+      <arg column="BK4" javaType="java.lang.String" jdbcType="NVARCHAR" />
+      <arg column="BK5" javaType="java.lang.String" jdbcType="NVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, DEVICE_ID, ORGANIZATION_ID, USER_ID, STATUS, ADDWHO, ADDDATE, EDITWHO, EDITDATE, 
+    BK1, BK2, BK3, BK4, BK5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from DEVICE_TRANS
+    where ID = #{id,jdbcType=NUMERIC}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from DEVICE_TRANS
+    where ID = #{id,jdbcType=NUMERIC}
+  </delete>
+  <insert id="insert" parameterType="com.management.device.pojo.DeviceTrans">
+    insert into DEVICE_TRANS (ID, DEVICE_ID, ORGANIZATION_ID, 
+      USER_ID, STATUS, ADDWHO, 
+      ADDDATE, EDITWHO, EDITDATE, 
+      BK1, BK2, BK3, BK4, 
+      BK5)
+    values (#{id,jdbcType=NUMERIC}, #{deviceId,jdbcType=NVARCHAR}, #{organizationId,jdbcType=INTEGER}, 
+      #{organizationId,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR}, #{addwho,jdbcType=NVARCHAR},
+      #{adddate,jdbcType=TIMESTAMP}, #{editwho,jdbcType=NVARCHAR}, #{editdate,jdbcType=TIMESTAMP}, 
+      #{bk1,jdbcType=NVARCHAR}, #{bk2,jdbcType=NVARCHAR}, #{bk3,jdbcType=NVARCHAR}, #{bk4,jdbcType=NVARCHAR}, 
+      #{bk5,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.management.device.pojo.DeviceTrans">
+    insert into DEVICE_TRANS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="deviceId != null">
+        DEVICE_ID,
+      </if>
+      <if test="organizationId != null">
+        ORGANIZATION_ID,
+      </if>
+      <if test="organizationId != null">
+        USER_ID,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="addwho != null">
+        ADDWHO,
+      </if>
+      <if test="true">
+        ADDDATE,
+      </if>
+      <if test="editwho != null">
+        EDITWHO,
+      </if>
+      <if test="true">
+        EDITDATE,
+      </if>
+      <if test="bk1 != null">
+        BK1,
+      </if>
+      <if test="bk2 != null">
+        BK2,
+      </if>
+      <if test="bk3 != null">
+        BK3,
+      </if>
+      <if test="bk4 != null">
+        BK4,
+      </if>
+      <if test="bk5 != null">
+        BK5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=NUMERIC},
+      </if>
+      <if test="deviceId != null">
+        #{deviceId,jdbcType=NVARCHAR},
+      </if>
+      <if test="organizationId != null">
+        #{organizationId,jdbcType=INTEGER},
+      </if>
+      <if test="organizationId != null">
+        #{organizationId,jdbcType=NVARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=NVARCHAR},
+      </if>
+      <if test="addwho != null">
+        #{addwho,jdbcType=NVARCHAR},
+      </if>
+      <if test="true">
+        getdate(),
+      </if>
+      <if test="editwho != null">
+        #{editwho,jdbcType=NVARCHAR},
+      </if>
+      <if test="true">
+        getdate(),
+      </if>
+      <if test="bk1 != null">
+        #{bk1,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk2 != null">
+        #{bk2,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk3 != null">
+        #{bk3,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk4 != null">
+        #{bk4,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk5 != null">
+        #{bk5,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.management.device.pojo.DeviceTrans">
+    update DEVICE_TRANS
+    <set>
+      <if test="deviceId != null">
+        DEVICE_ID = #{deviceId,jdbcType=NVARCHAR},
+      </if>
+      <if test="organizationId != null">
+        ORGANIZATION_ID = #{organizationId,jdbcType=INTEGER},
+      </if>
+      <if test="organizationId != null">
+        USER_ID = #{organizationId,jdbcType=NVARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=NVARCHAR},
+      </if>
+      <if test="addwho != null">
+        ADDWHO = #{addwho,jdbcType=NVARCHAR},
+      </if>
+      <if test="adddate != null">
+        ADDDATE = #{adddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editwho != null">
+        EDITWHO = #{editwho,jdbcType=NVARCHAR},
+      </if>
+      <if test="true">
+        EDITDATE = getdate(),
+      </if>
+      <if test="bk1 != null">
+        BK1 = #{bk1,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk2 != null">
+        BK2 = #{bk2,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk3 != null">
+        BK3 = #{bk3,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk4 != null">
+        BK4 = #{bk4,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk5 != null">
+        BK5 = #{bk5,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=NUMERIC}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.management.device.pojo.DeviceTrans">
+    update DEVICE_TRANS
+    set DEVICE_ID = #{deviceId,jdbcType=NVARCHAR},
+      ORGANIZATION_ID = #{organizationId,jdbcType=INTEGER},
+      USER_ID = #{organizationId,jdbcType=NVARCHAR},
+      STATUS = #{status,jdbcType=NVARCHAR},
+      ADDWHO = #{addwho,jdbcType=NVARCHAR},
+      ADDDATE = #{adddate,jdbcType=TIMESTAMP},
+      EDITWHO = #{editwho,jdbcType=NVARCHAR},
+      EDITDATE = #{editdate,jdbcType=TIMESTAMP},
+      BK1 = #{bk1,jdbcType=NVARCHAR},
+      BK2 = #{bk2,jdbcType=NVARCHAR},
+      BK3 = #{bk3,jdbcType=NVARCHAR},
+      BK4 = #{bk4,jdbcType=NVARCHAR},
+      BK5 = #{bk5,jdbcType=NVARCHAR}
+    where ID = #{id,jdbcType=NUMERIC}
+  </update>
+  <select id="selectByDeviceId" parameterType="string" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from DEVICE_TRANS
+    where DEVICE_ID = #{deviceId,jdbcType=NUMERIC}
+    <if test="status != null">
+      and status = #{status}
+    </if>
+
+  </select>
+
+  <select id="selectAllByDeviceId" resultType="com.management.device.vo.DeviceTransVo" parameterType="string">
+    select a.id as "id",a.DEVICE_ID as "deviceId",c.DEVICE_TYPE_ID as "deviceTypeId",c.DEVICE_TYPE_NAME as "deviceTypeName",a.STATUS,a.ADDWHO,d.name as "handleWho",a.ORGANIZATION_ID as "organizationId",e.NAME as "organizationName"
+    from DEVICE_TRANS a, DEVICE_LIST b , DEVICE_TYPE c , login d, ORGANIZATION e
+    where a.DEVICE_ID = b.DEVICE_ID and b.DEVICE_TYPE_ID = c.DEVICE_TYPE_ID
+    and a.ADDWHO = d.id and a.ORGANIZATION_ID = e.ID
+    and a.DEVICE_ID = #{deviceId}
+    order by a.editdate desc
+  </select>
+
+</mapper>

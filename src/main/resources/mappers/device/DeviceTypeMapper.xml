@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.management.device.dao.DeviceTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.management.device.pojo.DeviceType" >
+    <constructor >
+      <idArg column="DEVICE_TYPE_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="DEVICE_TYPE_NAME" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="ADDDATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="ADDWHO" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="BK1" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="BK2" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="BK3" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="BK4" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="BK5" jdbcType="NVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    DEVICE_TYPE_ID, DEVICE_TYPE_NAME, ADDDATE, ADDWHO, BK1, BK2, BK3, BK4, BK5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from DEVICE_TYPE
+    where DEVICE_TYPE_ID = #{deviceTypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from DEVICE_TYPE
+    where DEVICE_TYPE_ID = #{deviceTypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.management.device.pojo.DeviceType" >
+    insert into DEVICE_TYPE (DEVICE_TYPE_ID, DEVICE_TYPE_NAME, ADDDATE, 
+      ADDWHO, BK1, BK2, 
+      BK3, BK4, BK5)
+    values (#{deviceTypeId,jdbcType=INTEGER}, #{deviceTypeName,jdbcType=NVARCHAR}, #{adddate,jdbcType=TIMESTAMP}, 
+      #{addwho,jdbcType=NVARCHAR}, #{bk1,jdbcType=NVARCHAR}, #{bk2,jdbcType=NVARCHAR}, 
+      #{bk3,jdbcType=NVARCHAR}, #{bk4,jdbcType=NVARCHAR}, #{bk5,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.management.device.pojo.DeviceType" >
+    insert into DEVICE_TYPE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deviceTypeId != null" >
+        DEVICE_TYPE_ID,
+      </if>
+      <if test="deviceTypeName != null" >
+        DEVICE_TYPE_NAME,
+      </if>
+      <if test="adddate != null" >
+        ADDDATE,
+      </if>
+      <if test="addwho != null" >
+        ADDWHO,
+      </if>
+      <if test="bk1 != null" >
+        BK1,
+      </if>
+      <if test="bk2 != null" >
+        BK2,
+      </if>
+      <if test="bk3 != null" >
+        BK3,
+      </if>
+      <if test="bk4 != null" >
+        BK4,
+      </if>
+      <if test="bk5 != null" >
+        BK5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deviceTypeId != null" >
+        #{deviceTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="deviceTypeName != null" >
+        #{deviceTypeName,jdbcType=NVARCHAR},
+      </if>
+      <if test="adddate != null" >
+        #{adddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addwho != null" >
+        #{addwho,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk1 != null" >
+        #{bk1,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk2 != null" >
+        #{bk2,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk3 != null" >
+        #{bk3,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk4 != null" >
+        #{bk4,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk5 != null" >
+        #{bk5,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.management.device.pojo.DeviceType" >
+    update DEVICE_TYPE
+    <set >
+      <if test="deviceTypeName != null" >
+        DEVICE_TYPE_NAME = #{deviceTypeName,jdbcType=NVARCHAR},
+      </if>
+      <if test="adddate != null" >
+        ADDDATE = #{adddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addwho != null" >
+        ADDWHO = #{addwho,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk1 != null" >
+        BK1 = #{bk1,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk2 != null" >
+        BK2 = #{bk2,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk3 != null" >
+        BK3 = #{bk3,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk4 != null" >
+        BK4 = #{bk4,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk5 != null" >
+        BK5 = #{bk5,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where DEVICE_TYPE_ID = #{deviceTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.management.device.pojo.DeviceType" >
+    update DEVICE_TYPE
+    set DEVICE_TYPE_NAME = #{deviceTypeName,jdbcType=NVARCHAR},
+      ADDDATE = #{adddate,jdbcType=TIMESTAMP},
+      ADDWHO = #{addwho,jdbcType=NVARCHAR},
+      BK1 = #{bk1,jdbcType=NVARCHAR},
+      BK2 = #{bk2,jdbcType=NVARCHAR},
+      BK3 = #{bk3,jdbcType=NVARCHAR},
+      BK4 = #{bk4,jdbcType=NVARCHAR},
+      BK5 = #{bk5,jdbcType=NVARCHAR}
+    where DEVICE_TYPE_ID = #{deviceTypeId,jdbcType=INTEGER}
+  </update>
+  <select id="findAll" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from DEVICE_TYPE
+  </select>
+
+    <select id="selectByDeviceTypeName" resultType="string">
+        select DEVICE_TYPE_NAME
+        from DEVICE_TYPE
+        where DEVICE_TYPE_NAME=#{deviceTypeName}
+    </select>
+</mapper>

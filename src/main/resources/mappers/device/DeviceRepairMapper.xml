@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.management.device.dao.DeviceRepairMapper" >
+  <resultMap id="BaseResultMap" type="com.management.device.pojo.DeviceRepair" >
+    <constructor >
+      <idArg column="ID" jdbcType="NUMERIC" javaType="java.lang.Long" />
+      <arg column="DEVICE_ID" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="DEVICE_TYPE_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="DEVICE_TYPE_NAME" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="DEVICE_USER_ID" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="DEVICE_USER_NAME" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="STATUS" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CAUSE" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="BAKUP" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="ADDDATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="EDITDATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="question_description" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="repair_user_id" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="Component" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="cost" jdbcType="NUMERIC" javaType="java.math.BigDecimal" />
+      <arg column="result" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="bk1" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="bk2" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="bk3" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="bk4" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="bk5" jdbcType="NVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, DEVICE_ID, DEVICE_TYPE_ID, DEVICE_TYPE_NAME, DEVICE_USER_ID, DEVICE_USER_NAME, 
+    STATUS, CAUSE, BAKUP, ADDDATE, EDITDATE, question_description, repair_user_id, Component, 
+    cost, result, bk1, bk2, bk3, bk4, bk5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from DEVICE_REPAIR
+    where ID = #{id,jdbcType=NUMERIC}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from DEVICE_REPAIR
+    where ID = #{id,jdbcType=NUMERIC}
+  </delete>
+  <insert id="insert" parameterType="com.management.device.pojo.DeviceRepair" >
+    insert into DEVICE_REPAIR (ID, DEVICE_ID, DEVICE_TYPE_ID, 
+      DEVICE_TYPE_NAME, DEVICE_USER_ID, DEVICE_USER_NAME, 
+      STATUS, CAUSE, BAKUP, 
+      ADDDATE, EDITDATE, question_description, 
+      repair_user_id, Component, cost, 
+      result, bk1, bk2, 
+      bk3, bk4, bk5)
+    values (#{id,jdbcType=NUMERIC}, #{deviceId,jdbcType=NVARCHAR}, #{deviceTypeId,jdbcType=INTEGER}, 
+      #{deviceTypeName,jdbcType=NVARCHAR}, #{deviceUserId,jdbcType=NVARCHAR}, #{deviceUserName,jdbcType=NVARCHAR},
+      #{status,jdbcType=INTEGER}, #{cause,jdbcType=NVARCHAR}, #{bakup,jdbcType=NVARCHAR}, 
+      #{adddate,jdbcType=TIMESTAMP}, #{editdate,jdbcType=TIMESTAMP}, #{questionDescription,jdbcType=NVARCHAR}, 
+      #{repairUserId,jdbcType=NVARCHAR}, #{component,jdbcType=NVARCHAR}, #{cost,jdbcType=NUMERIC}, 
+      #{result,jdbcType=NVARCHAR}, #{bk1,jdbcType=NVARCHAR}, #{bk2,jdbcType=NVARCHAR}, 
+      #{bk3,jdbcType=NVARCHAR}, #{bk4,jdbcType=NVARCHAR}, #{bk5,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.management.device.pojo.DeviceRepair" >
+    insert into DEVICE_REPAIR
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="deviceId != null" >
+        DEVICE_ID,
+      </if>
+      <if test="deviceTypeId != null" >
+        DEVICE_TYPE_ID,
+      </if>
+      <if test="deviceTypeName != null" >
+        DEVICE_TYPE_NAME,
+      </if>
+      <if test="deviceUserId != null" >
+        DEVICE_USER_ID,
+      </if>
+      <if test="deviceUserName != null" >
+        DEVICE_USER_NAME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="cause != null" >
+        CAUSE,
+      </if>
+      <if test="bakup != null" >
+        BAKUP,
+      </if>
+      <if test="true" >
+        ADDDATE,
+      </if>
+      <if test="true" >
+        EDITDATE,
+      </if>
+      <if test="questionDescription != null" >
+        question_description,
+      </if>
+      <if test="repairUserId != null" >
+        repair_user_id,
+      </if>
+      <if test="component != null" >
+        Component,
+      </if>
+      <if test="cost != null" >
+        cost,
+      </if>
+      <if test="result != null" >
+        result,
+      </if>
+      <if test="bk1 != null" >
+        bk1,
+      </if>
+      <if test="bk2 != null" >
+        bk2,
+      </if>
+      <if test="bk3 != null" >
+        bk3,
+      </if>
+      <if test="bk4 != null" >
+        bk4,
+      </if>
+      <if test="bk5 != null" >
+        bk5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=NUMERIC},
+      </if>
+      <if test="deviceId != null" >
+        #{deviceId,jdbcType=NVARCHAR},
+      </if>
+      <if test="deviceTypeId != null" >
+        #{deviceTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="deviceTypeName != null" >
+        #{deviceTypeName,jdbcType=NVARCHAR},
+      </if>
+      <if test="deviceUserId != null" >
+        #{deviceUserId,jdbcType=NVARCHAR},
+      </if>
+      <if test="deviceUserName != null" >
+        #{deviceUserName,jdbcType=NVARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="cause != null" >
+        #{cause,jdbcType=NVARCHAR},
+      </if>
+      <if test="bakup != null" >
+        #{bakup,jdbcType=NVARCHAR},
+      </if>
+      <if test="true" >
+        getdate(),
+      </if>
+      <if test="true" >
+        getdate(),
+      </if>
+      <if test="questionDescription != null" >
+        #{questionDescription,jdbcType=NVARCHAR},
+      </if>
+      <if test="repairUserId != null" >
+        #{repairUserId,jdbcType=NVARCHAR},
+      </if>
+      <if test="component != null" >
+        #{component,jdbcType=NVARCHAR},
+      </if>
+      <if test="cost != null" >
+        #{cost,jdbcType=NUMERIC},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk1 != null" >
+        #{bk1,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk2 != null" >
+        #{bk2,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk3 != null" >
+        #{bk3,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk4 != null" >
+        #{bk4,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk5 != null" >
+        #{bk5,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.management.device.pojo.DeviceRepair" >
+    update DEVICE_REPAIR
+    <set >
+      <if test="deviceId != null" >
+        DEVICE_ID = #{deviceId,jdbcType=NVARCHAR},
+      </if>
+      <if test="deviceTypeId != null" >
+        DEVICE_TYPE_ID = #{deviceTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="deviceTypeName != null" >
+        DEVICE_TYPE_NAME = #{deviceTypeName,jdbcType=NVARCHAR},
+      </if>
+      <if test="deviceUserId != null" >
+        DEVICE_USER_ID = #{deviceUserId,jdbcType=NVARCHAR},
+      </if>
+      <if test="deviceUserName != null" >
+        DEVICE_USER_NAME = #{deviceUserName,jdbcType=NVARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="cause != null" >
+        CAUSE = #{cause,jdbcType=NVARCHAR},
+      </if>
+      <if test="bakup != null" >
+        BAKUP = #{bakup,jdbcType=NVARCHAR},
+      </if>
+      <if test="adddate != null" >
+        ADDDATE = #{adddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="true" >
+        EDITDATE = getdate(),
+      </if>
+      <if test="questionDescription != null" >
+        question_description = #{questionDescription,jdbcType=NVARCHAR},
+      </if>
+      <if test="repairUserId != null" >
+        repair_user_id = #{repairUserId,jdbcType=NVARCHAR},
+      </if>
+      <if test="component != null" >
+        Component = #{component,jdbcType=NVARCHAR},
+      </if>
+      <if test="cost != null" >
+        cost = #{cost,jdbcType=NUMERIC},
+      </if>
+      <if test="result != null" >
+        result = #{result,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk1 != null" >
+        bk1 = #{bk1,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk2 != null" >
+        bk2 = #{bk2,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk3 != null" >
+        bk3 = #{bk3,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk4 != null" >
+        bk4 = #{bk4,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk5 != null" >
+        bk5 = #{bk5,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=NUMERIC}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.management.device.pojo.DeviceRepair" >
+    update DEVICE_REPAIR
+    set DEVICE_ID = #{deviceId,jdbcType=NVARCHAR},
+      DEVICE_TYPE_ID = #{deviceTypeId,jdbcType=INTEGER},
+      DEVICE_TYPE_NAME = #{deviceTypeName,jdbcType=NVARCHAR},
+      DEVICE_USER_ID = #{deviceUserId,jdbcType=NVARCHAR},
+      DEVICE_USER_NAME = #{deviceUserName,jdbcType=NVARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      CAUSE = #{cause,jdbcType=NVARCHAR},
+      BAKUP = #{bakup,jdbcType=NVARCHAR},
+      ADDDATE = #{adddate,jdbcType=TIMESTAMP},
+      EDITDATE = getdate(),
+      question_description = #{questionDescription,jdbcType=NVARCHAR},
+      repair_user_id = #{repairUserId,jdbcType=NVARCHAR},
+      Component = #{component,jdbcType=NVARCHAR},
+      cost = #{cost,jdbcType=NUMERIC},
+      result = #{result,jdbcType=NVARCHAR},
+      bk1 = #{bk1,jdbcType=NVARCHAR},
+      bk2 = #{bk2,jdbcType=NVARCHAR},
+      bk3 = #{bk3,jdbcType=NVARCHAR},
+      bk4 = #{bk4,jdbcType=NVARCHAR},
+      bk5 = #{bk5,jdbcType=NVARCHAR}
+    where ID = #{id,jdbcType=NUMERIC}
+  </update>
+
+
+  <select id="findAll" parameterType="map" resultMap="BaseResultMap">
+    select a.*
+    FROM DEVICE_REPAIR a, login b, ORGANIZATION c
+    where a.DEVICE_USER_ID=b.id and b.ORGANIZATION_ID = c.ID
+      <if test="deviceRepair.deviceId != null ">
+        and a.DEVICE_ID = #{deviceRepair.deviceId}
+      </if>
+      <if test="deviceRepair.deviceTypeId != null ">
+        and a.DEVICE_TYPE_ID = #{deviceRepair.deviceTypeId}
+      </if>
+      <if test="deviceRepair.status != null">
+        and a.STATUS = #{deviceRepair.status}
+      </if>
+      <if test="deviceRepair.deviceUserId != null">
+        and a.DEVICE_USER_ID = #{deviceRepair.deviceUserId}
+      </if>
+      <if test="ids != null and ids.size() > 0">
+        and c.id in
+        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+    order by DEVICE_ID
+  </select>
+
+  <select id="selectByDeviceIdAndStatus" parameterType="map" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from DEVICE_REPAIR
+    where DEVICE_ID = #{deviceId}
+    and STATUS = #{status}
+  </select>
+
+</mapper>

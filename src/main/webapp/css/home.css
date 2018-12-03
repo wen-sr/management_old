@@ -1,0 +1,156 @@
+/**
+ * Description: 
+ * User: wen-sr
+ * Date: 2017-09-01  17:38
+ */
+#top{
+    /*background: #1a6aab;*/
+}
+#nav-west{
+    background: #428fb9;
+}
+* {
+    font-size: 12px;
+    font-family: "Microsoft YaHei UI Light",Tahoma, Verdana, 微软雅黑, 新宋体;
+    color: #000000;
+}
+
+body {
+    background: #D2E0F2;
+}
+
+a {
+    color: Black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: Red;
+    cursor: pointer;
+    /*text-decoration: underline;*/
+}
+
+
+.txt01 {
+    padding: 3px 2px 2px 2px;
+    border-width: 1px;
+    border-color: #ddd;
+    color: #000;
+}
+
+.txt {
+    border: #878787 1px solid;
+    padding: 4px 3px;
+    line-height: 14px;
+    background-color: #fff;
+    height: auto;
+    font-size: 14px;
+}
+
+.footer {
+    text-align: center;
+    color: #15428B;
+    margin: 0px;
+    padding: 0px;
+    line-height: 23px;
+    font-weight: bold;
+}
+
+.head a {
+    color: #000000;
+    text-decoration:none;
+}
+
+.easyui-accordion ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 10px;
+}
+
+.easyui-accordion ul li {
+    border: 1px dashed #99BBE8;
+    margin: 2px 2px;
+    padding-left: 10px;
+    padding-top: 2px;
+}
+
+.easyui-accordion ul li a {
+    display: inline-block;
+    height:95%;
+    width: 95%;
+    font-family: "Microsoft YaHei UI Light",Tahoma, Verdana, 微软雅黑, 新宋体;
+    line-height: 24px;
+}
+
+.easyui-accordion ul li:hover {
+    border: 1px dashed #99BBE8;
+    background: #E0ECFF;
+    cursor: pointer;
+}
+
+.easyui-accordion ul li.hover a {
+    color: #416AA3;
+    font-weight: bold;
+}
+
+.fa {
+    color: #1a6aab;
+}
+
+/* ul li以横排显示 */
+
+.menu_t{
+    float: left;
+    margin: 5px 20px;
+}
+/* 所有class为menu的div中的ul样式 */
+div.menu_t ul
+{
+    list-style:none; /* 去掉ul前面的符号 */
+    margin: 0px; /* 与外界元素的距离为0 */
+    padding: 0px; /* 与内部元素的距离为0 */
+    width: auto; /* 宽度根据元素内容调整 */
+}
+/* 所有class为menu的div中的ul中的li样式 */
+div.menu_t ul li
+{
+    float:left; /* 向左漂移，将竖排变为横排 */
+}
+/* 所有class为menu的div中的ul中的a样式(包括尚未点击的和点击过的样式) */
+div.menu_t ul li a /*, div.menu_t ul li a:visited*/
+{
+    background-color: #FFFFFF; /* 背景色 */
+    /*border: 1px #4e667d solid; /* 边框 */
+    color: #2C538C; /* 文字颜色 */
+    display: block; /* 此元素将显示为块级元素，此元素前后会带有换行符 */
+    line-height: 2.37em; /* 行高 */
+    padding: 0px 30px; /* 内部填充的距离 */
+    text-decoration: none; /* 不显示超链接下划线 */
+    white-space: nowrap; /* 对于文本内的空白处，不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。 */
+    font-size: 18px;
+}
+/* 所有class为menu的div中的ul中的a样式(鼠标移动到元素中的样式) */
+div.menu_t ul li a:hover
+{
+    background-color: #E0ECFF; /* 背景色 */
+    color: #465c71; /* 文字颜色 */
+    text-decoration: none; /* 不显示超链接下划线 */
+    border-top-left-radius:1em;
+    border-top-right-radius:1em;
+    font-size:19px;
+}
+/* 所有class为menu的div中的ul中的a样式(鼠标点击元素时的样式) */
+div.menu_t ul li a:active
+{
+    background-color: #465c71; /* 背景色 */
+    color: #cfdbe6; /* 文字颜色 */
+    text-decoration: none; /* 不显示超链接下划线 */
+}
+/* 当前激活 */
+.currentActive
+{
+    background-color: #E0ECFF; /* 背景色 */
+    color: #465c71; /* 文字颜色 */
+    text-decoration: none; /* 不显示超链接下划线 */
+    font-size:19px;
+}

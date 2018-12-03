@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.management.prd1.dao.PackBatchnoMapper" >
+  <resultMap id="BaseResultMap" type="com.management.prd1.pojo.PackBatchno" >
+    <constructor >
+      <arg column="DD" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BATCHNO" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CASEQTY" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="PACK_USER" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USR_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.management.prd1.pojo.PackBatchno" >
+    insert into PACKBATCHNO (DD, BATCHNO, CASEQTY, 
+      PACK_USER, USR_NAME)
+    values (#{dd,jdbcType=VARCHAR}, #{batchno,jdbcType=VARCHAR}, #{caseqty,jdbcType=DECIMAL}, 
+      #{packUser,jdbcType=VARCHAR}, #{usrName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.management.prd1.pojo.PackBatchno" >
+    insert into PACKBATCHNO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dd != null" >
+        DD,
+      </if>
+      <if test="batchno != null" >
+        BATCHNO,
+      </if>
+      <if test="caseqty != null" >
+        CASEQTY,
+      </if>
+      <if test="packUser != null" >
+        PACK_USER,
+      </if>
+      <if test="usrName != null" >
+        USR_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dd != null" >
+        #{dd,jdbcType=VARCHAR},
+      </if>
+      <if test="batchno != null" >
+        #{batchno,jdbcType=VARCHAR},
+      </if>
+      <if test="caseqty != null" >
+        #{caseqty,jdbcType=DECIMAL},
+      </if>
+      <if test="packUser != null" >
+        #{packUser,jdbcType=VARCHAR},
+      </if>
+      <if test="usrName != null" >
+        #{usrName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+    <select id="getData" resultType="com.management.prd1.pojo.PackBatchno">
+      select dd,batchno,caseqty,pack_user as packUser,usr_name as usrName from packBatchno
+      where
+      <if test="dd == null">
+        dd = to_char(sysdate, 'yyyy-mm-dd')
+      </if>
+      <if test="dd != null">
+        dd = #{dd}
+      </if>
+      <if test="id != null">
+        and pack_user = #{id}
+      </if>
+      ORDER BY 4
+    </select>
+</mapper>

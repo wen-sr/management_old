@@ -1,0 +1,19 @@
+/**
+ * Description: 
+ * User: wen-sr
+ * Date: 2017-09-20 11:00
+ */
+.title {
+   text-align: center;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#deviceId{
+    height:auto;
+    padding-bottom: 6px;
+    width:88%;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>技术部管理信息系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="../../layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all"/>
+    <link rel="stylesheet" href="../../css/user.css" media="all"/>
+    <style rel="stylesheet">
+        .layui-table-view{
+            margin:0;
+        }
+        .layui-elem-quote{
+            padding:2px;
+        }
+        .layui-elem-quote{
+            margin-bottom: 0;
+        }
+    </style>
+
+
+</head>
+<body class="childrenBody" >
+<div class="layui-elem-quote news_search">
+
+    <div class="layui-inline">
+        <div class="layui-input-inline">
+            <label class="layui-form-label" style="width: auto">设备编号</label>
+        </div>
+        <div class="layui-input-inline">
+            <input type="text" id="deviceId" value="" placeholder="请输入设备编号" class="layui-input search_input">
+        </div>
+        <select id="status" name="type" class="layui-select">
+            <option value="">-- 维修状态 --</option>
+            <option value="4">维修中</option>
+            <option value="5">已维修</option>
+        </select>
+        <select id="organizationId" name="type" class="layui-select" lay-filter="getUser">
+            <script id="userIdOptions" type="text/x-handlebars-template">
+                <option value="">-- 送修者 --</option>
+                {{#each this}}
+                <option value="{{deviceUserId}}">{{deviceUserName}}</option>
+                {{/each}}
+            </script>
+        </select>
+        <a class="layui-btn search_btn" id="go">查询</a>
+        <a class="layui-btn search_btn" id="add">新增报修单</a>
+    </div>
+</div>
+<div class="layui-form users_list">
+    <table id="data" lay-filter="clickEvent">
+
+    </table>
+</div>
+<script type="text/html" id="bar">
+    <a class="layui-btn layui-btn-mini" lay-event="repairDone">维修完成</a>
+</script>
+
+
+<script type="text/javascript" src="../../js/util/util.js"></script>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../layui/layui.all.js"></script>
+<script src="../../js/handlebars-v4.0.10.js"></script>
+<script type="text/javascript" src="device.js"></script>
+<script type="text/javascript" src="repair.js"></script>
+</body>
+
+</html>
+
+
+<div id="addForm" style="margin: 0 auto;width:500px;height:500px;display: none">
+    lllsgllag
+    <!--<fieldset class="layui-elem-field layui-field-title">-->
+    <!--<legend align="center">故障报修</legend>-->
+    <!--</fieldset>-->
+    <!--<form class="layui-form" controller="">-->
+    <!--<div class="layui-inline">-->
+    <!--<label class="layui-form-label">设备编号</label>-->
+    <!--<div class="layui-input-inline">-->
+    <!--<input type="tel" name="phone" lay-verify="phone" autocomplete="off" class="layui-input">-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="layui-form-item layui-form-text">-->
+    <!--<label class="layui-form-label">故障描述</label>-->
+    <!--<div class="layui-input-block">-->
+    <!--<textarea placeholder="请输入内容" class="layui-textarea"></textarea>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<button type="button" class="layui-btn layui-btn-normal" id="testList" name="multipartFiles">选择多文件</button>-->
+    <!--<div class="layui-upload-list">-->
+    <!--<table class="layui-table">-->
+    <!--<thead>-->
+    <!--<tr><th>文件名</th>-->
+    <!--<th>大小</th>-->
+    <!--<th>状态</th>-->
+    <!--<th>操作</th>-->
+    <!--</tr></thead>-->
+    <!--<tbody id="demoList"></tbody>-->
+    <!--</table>-->
+    <!--</div>-->
+    <!--<button type="button" class="layui-btn" id="testListAction">开始上传</button>-->
+    <!--</form>-->
+</div>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+           $.ajax({
+               type:'Post',
+               url:'/management/sign/getSign',
+               data:"myUrl=" + encodeURIComponent(window.location.href),
+               dataType:'json',
+               success:function(res){
+                   var timestamp = res.timestamp;//时间戳
+                   var nonceStr = res.nonceStr;//随机串
+                   var signature = res.signature;//签名
+                   wx.config({
+                       debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+
+                       appId: 'wx5993aae7e1692dd7', // 必填，公众号的唯一标识
+
+                       timestamp: timestamp, // 必填，生成签名的时间戳
+
+                       nonceStr: nonceStr, // 必填，生成签名的随机串
+
+                       signature: signature,// 必填，签名，见附录1
+
+                       jsApiList: ['scanQRCode'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+
+                   });
+               }
+           });
+
+            $("#scan").click(function () {
+                wx.scanQRCode({
+                    needResult: 1,
+                    desc: 'scanQRCode desc',
+                    success: function (res) {
+                        //扫码后获取结果参数:htpp://xxx.com/c/?6123，截取到url中的防伪码后，赋值给Input
+                        var url = res.resultStr;
+                        var tempArray = url.split('?');
+                        var tempNum = tempArray[1];
+//                        $("#id_securityCode_input").val(tempNum);
+                        alert(tempNum);
+                    }
+                });
+            });
+
+        });
+
+
+
+
+    </script>
+</head>
+<body>
+    <input type="button" id="scan" value="扫描" />
+</body>
+</html>

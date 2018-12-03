@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.management.prd1.dao.XsogroupMapper" >
+  <resultMap id="BaseResultMap" type="com.management.prd1.pojo.Xsogroup" >
+    <constructor >
+      <idArg column="XSOGROUPKEY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ARRIVE_DATE" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="TYPE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FROM_STATION" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FROM_VENDOR" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CARRIER_NO" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SHIP_NO" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FLAG" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="EXPECT_QTY" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="RECEIVE_QTY" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="ERROR_FLAG" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ERROR_QTY" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="TRANSPORT" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SHIP_TYPE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SHIP_USER" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SHIP_DATE" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="RECEIVE_USER" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="RECEIVE_DATE" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="SEND_USER" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SEND_DATE" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="NOTE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="GROUPKEY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="STATUS" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ADDDATE" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="ADDWHO" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="EDITDATE" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="EDITWHO" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="WORKGROUP_DATE" jdbcType="DATE" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    XSOGROUPKEY, ARRIVE_DATE, TYPE, FROM_STATION, FROM_VENDOR, CARRIER_NO, SHIP_NO, FLAG, 
+    EXPECT_QTY, RECEIVE_QTY, ERROR_FLAG, ERROR_QTY, TRANSPORT, SHIP_TYPE, SHIP_USER, 
+    SHIP_DATE, RECEIVE_USER, RECEIVE_DATE, SEND_USER, SEND_DATE, NOTE, GROUPKEY, STATUS, 
+    ADDDATE, ADDWHO, EDITDATE, EDITWHO, WORKGROUP_DATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from XSOGROUP
+    where XSOGROUPKEY = #{xsogroupkey,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from XSOGROUP
+    where XSOGROUPKEY = #{xsogroupkey,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.management.prd1.pojo.Xsogroup" >
+    insert into XSOGROUP (XSOGROUPKEY, ARRIVE_DATE, TYPE, 
+      FROM_STATION, FROM_VENDOR, CARRIER_NO, 
+      SHIP_NO, FLAG, EXPECT_QTY, 
+      RECEIVE_QTY, ERROR_FLAG, ERROR_QTY, 
+      TRANSPORT, SHIP_TYPE, SHIP_USER, 
+      SHIP_DATE, RECEIVE_USER, RECEIVE_DATE, 
+      SEND_USER, SEND_DATE, NOTE, 
+      GROUPKEY, STATUS, ADDDATE, 
+      ADDWHO, EDITDATE, EDITWHO, 
+      WORKGROUP_DATE)
+    values (#{xsogroupkey,jdbcType=VARCHAR}, #{arriveDate,jdbcType=DATE}, #{type,jdbcType=VARCHAR}, 
+      #{fromStation,jdbcType=VARCHAR}, #{fromVendor,jdbcType=VARCHAR}, #{carrierNo,jdbcType=VARCHAR}, 
+      #{shipNo,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}, #{expectQty,jdbcType=DECIMAL}, 
+      #{receiveQty,jdbcType=DECIMAL}, #{errorFlag,jdbcType=VARCHAR}, #{errorQty,jdbcType=DECIMAL}, 
+      #{transport,jdbcType=VARCHAR}, #{shipType,jdbcType=VARCHAR}, #{shipUser,jdbcType=VARCHAR}, 
+      #{shipDate,jdbcType=DATE}, #{receiveUser,jdbcType=VARCHAR}, #{receiveDate,jdbcType=DATE}, 
+      #{sendUser,jdbcType=VARCHAR}, #{sendDate,jdbcType=DATE}, #{note,jdbcType=VARCHAR}, 
+      #{groupkey,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{adddate,jdbcType=DATE}, 
+      #{addwho,jdbcType=VARCHAR}, #{editdate,jdbcType=DATE}, #{editwho,jdbcType=VARCHAR}, 
+      #{workgroupDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.management.prd1.pojo.Xsogroup" >
+    insert into XSOGROUP
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="xsogroupkey != null" >
+        XSOGROUPKEY,
+      </if>
+      <if test="arriveDate != null" >
+        ARRIVE_DATE,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="fromStation != null" >
+        FROM_STATION,
+      </if>
+      <if test="fromVendor != null" >
+        FROM_VENDOR,
+      </if>
+      <if test="carrierNo != null" >
+        CARRIER_NO,
+      </if>
+      <if test="shipNo != null" >
+        SHIP_NO,
+      </if>
+      <if test="flag != null" >
+        FLAG,
+      </if>
+      <if test="expectQty != null" >
+        EXPECT_QTY,
+      </if>
+      <if test="receiveQty != null" >
+        RECEIVE_QTY,
+      </if>
+      <if test="errorFlag != null" >
+        ERROR_FLAG,
+      </if>
+      <if test="errorQty != null" >
+        ERROR_QTY,
+      </if>
+      <if test="transport != null" >
+        TRANSPORT,
+      </if>
+      <if test="shipType != null" >
+        SHIP_TYPE,
+      </if>
+      <if test="shipUser != null" >
+        SHIP_USER,
+      </if>
+      <if test="shipDate != null" >
+        SHIP_DATE,
+      </if>
+      <if test="receiveUser != null" >
+        RECEIVE_USER,
+      </if>
+      <if test="receiveDate != null" >
+        RECEIVE_DATE,
+      </if>
+      <if test="sendUser != null" >
+        SEND_USER,
+      </if>
+      <if test="sendDate != null" >
+        SEND_DATE,
+      </if>
+      <if test="note != null" >
+        NOTE,
+      </if>
+      <if test="groupkey != null" >
+        GROUPKEY,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="adddate != null" >
+        ADDDATE,
+      </if>
+      <if test="addwho != null" >
+        ADDWHO,
+      </if>
+      <if test="editdate != null" >
+        EDITDATE,
+      </if>
+      <if test="editwho != null" >
+        EDITWHO,
+      </if>
+      <if test="workgroupDate != null" >
+        WORKGROUP_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="xsogroupkey != null" >
+        #{xsogroupkey,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveDate != null" >
+        #{arriveDate,jdbcType=DATE},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="fromStation != null" >
+        #{fromStation,jdbcType=VARCHAR},
+      </if>
+      <if test="fromVendor != null" >
+        #{fromVendor,jdbcType=VARCHAR},
+      </if>
+      <if test="carrierNo != null" >
+        #{carrierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="shipNo != null" >
+        #{shipNo,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="expectQty != null" >
+        #{expectQty,jdbcType=DECIMAL},
+      </if>
+      <if test="receiveQty != null" >
+        #{receiveQty,jdbcType=DECIMAL},
+      </if>
+      <if test="errorFlag != null" >
+        #{errorFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="errorQty != null" >
+        #{errorQty,jdbcType=DECIMAL},
+      </if>
+      <if test="transport != null" >
+        #{transport,jdbcType=VARCHAR},
+      </if>
+      <if test="shipType != null" >
+        #{shipType,jdbcType=VARCHAR},
+      </if>
+      <if test="shipUser != null" >
+        #{shipUser,jdbcType=VARCHAR},
+      </if>
+      <if test="shipDate != null" >
+        #{shipDate,jdbcType=DATE},
+      </if>
+      <if test="receiveUser != null" >
+        #{receiveUser,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveDate != null" >
+        #{receiveDate,jdbcType=DATE},
+      </if>
+      <if test="sendUser != null" >
+        #{sendUser,jdbcType=VARCHAR},
+      </if>
+      <if test="sendDate != null" >
+        #{sendDate,jdbcType=DATE},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="groupkey != null" >
+        #{groupkey,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="adddate != null" >
+        #{adddate,jdbcType=DATE},
+      </if>
+      <if test="addwho != null" >
+        #{addwho,jdbcType=VARCHAR},
+      </if>
+      <if test="editdate != null" >
+        #{editdate,jdbcType=DATE},
+      </if>
+      <if test="editwho != null" >
+        #{editwho,jdbcType=VARCHAR},
+      </if>
+      <if test="workgroupDate != null" >
+        #{workgroupDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.management.prd1.pojo.Xsogroup" >
+    update XSOGROUP
+    <set >
+      <if test="arriveDate != null" >
+        ARRIVE_DATE = #{arriveDate,jdbcType=DATE},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="fromStation != null" >
+        FROM_STATION = #{fromStation,jdbcType=VARCHAR},
+      </if>
+      <if test="fromVendor != null" >
+        FROM_VENDOR = #{fromVendor,jdbcType=VARCHAR},
+      </if>
+      <if test="carrierNo != null" >
+        CARRIER_NO = #{carrierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="shipNo != null" >
+        SHIP_NO = #{shipNo,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        FLAG = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="expectQty != null" >
+        EXPECT_QTY = #{expectQty,jdbcType=DECIMAL},
+      </if>
+      <if test="receiveQty != null" >
+        RECEIVE_QTY = #{receiveQty,jdbcType=DECIMAL},
+      </if>
+      <if test="errorFlag != null" >
+        ERROR_FLAG = #{errorFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="errorQty != null" >
+        ERROR_QTY = #{errorQty,jdbcType=DECIMAL},
+      </if>
+      <if test="transport != null" >
+        TRANSPORT = #{transport,jdbcType=VARCHAR},
+      </if>
+      <if test="shipType != null" >
+        SHIP_TYPE = #{shipType,jdbcType=VARCHAR},
+      </if>
+      <if test="shipUser != null" >
+        SHIP_USER = #{shipUser,jdbcType=VARCHAR},
+      </if>
+      <if test="shipDate != null" >
+        SHIP_DATE = #{shipDate,jdbcType=DATE},
+      </if>
+      <if test="receiveUser != null" >
+        RECEIVE_USER = #{receiveUser,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveDate != null" >
+        RECEIVE_DATE = #{receiveDate,jdbcType=DATE},
+      </if>
+      <if test="sendUser != null" >
+        SEND_USER = #{sendUser,jdbcType=VARCHAR},
+      </if>
+      <if test="sendDate != null" >
+        SEND_DATE = #{sendDate,jdbcType=DATE},
+      </if>
+      <if test="note != null" >
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="groupkey != null" >
+        GROUPKEY = #{groupkey,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="adddate != null" >
+        ADDDATE = #{adddate,jdbcType=DATE},
+      </if>
+      <if test="addwho != null" >
+        ADDWHO = #{addwho,jdbcType=VARCHAR},
+      </if>
+      <if test="editdate != null" >
+        EDITDATE = #{editdate,jdbcType=DATE},
+      </if>
+      <if test="editwho != null" >
+        EDITWHO = #{editwho,jdbcType=VARCHAR},
+      </if>
+      <if test="workgroupDate != null" >
+        WORKGROUP_DATE = #{workgroupDate,jdbcType=DATE},
+      </if>
+    </set>
+    where XSOGROUPKEY = #{xsogroupkey,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.management.prd1.pojo.Xsogroup" >
+    update XSOGROUP
+    set ARRIVE_DATE = #{arriveDate,jdbcType=DATE},
+      TYPE = #{type,jdbcType=VARCHAR},
+      FROM_STATION = #{fromStation,jdbcType=VARCHAR},
+      FROM_VENDOR = #{fromVendor,jdbcType=VARCHAR},
+      CARRIER_NO = #{carrierNo,jdbcType=VARCHAR},
+      SHIP_NO = #{shipNo,jdbcType=VARCHAR},
+      FLAG = #{flag,jdbcType=VARCHAR},
+      EXPECT_QTY = #{expectQty,jdbcType=DECIMAL},
+      RECEIVE_QTY = #{receiveQty,jdbcType=DECIMAL},
+      ERROR_FLAG = #{errorFlag,jdbcType=VARCHAR},
+      ERROR_QTY = #{errorQty,jdbcType=DECIMAL},
+      TRANSPORT = #{transport,jdbcType=VARCHAR},
+      SHIP_TYPE = #{shipType,jdbcType=VARCHAR},
+      SHIP_USER = #{shipUser,jdbcType=VARCHAR},
+      SHIP_DATE = #{shipDate,jdbcType=DATE},
+      RECEIVE_USER = #{receiveUser,jdbcType=VARCHAR},
+      RECEIVE_DATE = #{receiveDate,jdbcType=DATE},
+      SEND_USER = #{sendUser,jdbcType=VARCHAR},
+      SEND_DATE = #{sendDate,jdbcType=DATE},
+      NOTE = #{note,jdbcType=VARCHAR},
+      GROUPKEY = #{groupkey,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      ADDDATE = #{adddate,jdbcType=DATE},
+      ADDWHO = #{addwho,jdbcType=VARCHAR},
+      EDITDATE = #{editdate,jdbcType=DATE},
+      EDITWHO = #{editwho,jdbcType=VARCHAR},
+      WORKGROUP_DATE = #{workgroupDate,jdbcType=DATE}
+    where XSOGROUPKEY = #{xsogroupkey,jdbcType=VARCHAR}
+  </update>
+
+  <select id="getReceiptToday" resultType="com.management.prd1.dto.ReceiptDto">
+    SELECT (case when type=0 and ship_type='01' then '01' when type=0 and ship_type='02' then '02' when type=0 and ship_type='03' then '03' when type=0 and ship_type='04' then '04' when type=0 and ship_type='05' then '05' when type=1 and ship_type='01' then '06' when type=1 and ship_type='02' then '07' else '08' end) type,sum(receive_qty) qty
+    from xsogroup
+    where to_char(adddate, 'yyyymmdd') = to_char(sysdate, 'yyyymmdd')
+    group by type,ship_type
+  </select>
+  <select id="getReceipt" parameterType="string" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    from xsogroup
+    <where>
+    <if test="end == null">
+      and to_char(adddate, 'yyyymmddd') = #{begin,jdbcType=VARCHAR}
+    </if>
+    <if test="begin == null">
+      and to_char(adddate, 'yyyymmddd') = #{end,jdbcType=VARCHAR}
+    </if>
+    <if test="begin != null and end != null">
+      and to_char(adddate, 'yyyymmddd') between #{begin,jdbcType=VARCHAR} and  #{end,jdbcType=VARCHAR}
+    </if>
+    </where>
+  </select>
+
+  <select id="selectByBarcode" resultType="com.management.prd1.dto.RecordSkuDto">
+    select descr,price
+    from sku
+    where barcode = #{barcode}
+  </select>
+
+  <select id="bookShip" resultType="com.management.prd1.vo.LogisticsQueryVo">
+    select shipkey,caseid,doc_storerkey as "storerkey",consk,shortname,status,to_char(adddate,'yyyy/mm/dd') adddate,( case when caseintime is null then to_char(adddate,'yyyy/mm/dd') else to_char(caseintime,'yyyy/mm/dd') end )  caseintime,
+    to_char(load_date, 'yyyy/mm/dd') loaddate, to_char(ship_date, 'yyyy/mm/dd') shipdate
+    from caseid
+    <where>
+      <if test="shipkey != null">
+        and shipkey = #{shipkey}
+      </if>
+      <if test="caseid != null">
+        and caseid = #{caseid}
+      </if>
+      <if test="status != null">
+        and status = #{status}
+      </if>
+      <if test="consk != null">
+        and consk = #{consk}
+      </if>
+      <if test="shortname != null">
+        and shortname = #{shortname}
+      </if>
+      <if test="adddate != null">
+        and to_char(adddate, 'yyyy-mm-dd') between #{adddate} and #{adddateEnd}
+      </if>
+      <if test="caseintime != null">
+        and (to_char(caseintime, 'yyyy-mm-dd') between #{caseintime} and  #{caseintimeEnd} or to_char(adddate, 'yyyy-mm-dd') between #{caseintime} and  #{caseintimeEnd})
+      </if>
+      <if test="loaddate != null">
+        and to_char(loaddate, 'yyyy-mm-dd') between #{loaddate} and #{loaddateEnd}
+      </if>
+      <if test="shipdate != null">
+        and to_char(shipdate, 'yyyy-mm-dd')  between #{shipdate} and #{shipdateEnd}
+      </if>
+      <if test="storerkey != null">
+        and storerkey = #{storerkey}
+      </if>
+    </where>
+  </select>
+  <select id="selectStorerById" resultType="java.lang.String">
+    select description from storer where storerkey = #{id}
+  </select>
+
+
+</mapper>

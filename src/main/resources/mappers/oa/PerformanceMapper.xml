@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.management.oa.dao.PerformanceMapper" >
+  <resultMap id="BaseResultMap" type="com.management.oa.pojo.Performance" >
+    <constructor >
+      <arg column="dd" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="oaId" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="depart" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="name" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="postBonus" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="yearsBonus" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="overtimeBonus" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="performanceBonus" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="othersAddBonus" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="totalAddBonus" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="socialSecurity" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="medicare" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="unemploymentInsurance" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="providentFund" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="membershipFee" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="hydropower" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="error" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="absence" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="othersMinusBonus" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="tax" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="totalMinusBonus" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+      <arg column="realBonus" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.management.oa.pojo.Performance" >
+    insert into Performance (dd, oaId, depart, 
+      name, postBonus, yearsBonus, 
+      overtimeBonus, performanceBonus, 
+      othersAddBonus, totalAddBonus, 
+      socialSecurity, medicare, unemploymentInsurance, 
+      providentFund, membershipFee, 
+      hydropower, error, absence, 
+      othersMinusBonus, tax, totalMinusBonus, 
+      realBonus)
+    values (#{dd,jdbcType=LONGNVARCHAR}, #{oaid,jdbcType=NVARCHAR}, #{depart,jdbcType=NVARCHAR}, 
+      #{name,jdbcType=NVARCHAR}, #{postbonus,jdbcType=LONGNVARCHAR}, #{yearsbonus,jdbcType=LONGNVARCHAR}, 
+      #{overtimebonus,jdbcType=LONGNVARCHAR}, #{performancebonus,jdbcType=LONGNVARCHAR}, 
+      #{othersaddbonus,jdbcType=LONGNVARCHAR}, #{totaladdbonus,jdbcType=LONGNVARCHAR}, 
+      #{socialsecurity,jdbcType=LONGNVARCHAR}, #{medicare,jdbcType=LONGNVARCHAR}, #{unemploymentinsurance,jdbcType=LONGNVARCHAR}, 
+      #{providentfund,jdbcType=LONGNVARCHAR}, #{membershipfee,jdbcType=LONGNVARCHAR}, 
+      #{hydropower,jdbcType=LONGNVARCHAR}, #{error,jdbcType=LONGNVARCHAR}, #{absence,jdbcType=LONGNVARCHAR}, 
+      #{othersminusbonus,jdbcType=LONGNVARCHAR}, #{tax,jdbcType=LONGNVARCHAR}, #{totalminusbonus,jdbcType=LONGNVARCHAR}, 
+      #{realbonus,jdbcType=LONGNVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.management.oa.pojo.Performance" >
+    insert into Performance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dd != null" >
+        dd,
+      </if>
+      <if test="oaid != null" >
+        oaId,
+      </if>
+      <if test="depart != null" >
+        depart,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="postbonus != null" >
+        postBonus,
+      </if>
+      <if test="yearsbonus != null" >
+        yearsBonus,
+      </if>
+      <if test="overtimebonus != null" >
+        overtimeBonus,
+      </if>
+      <if test="performancebonus != null" >
+        performanceBonus,
+      </if>
+      <if test="othersaddbonus != null" >
+        othersAddBonus,
+      </if>
+      <if test="totaladdbonus != null" >
+        totalAddBonus,
+      </if>
+      <if test="socialsecurity != null" >
+        socialSecurity,
+      </if>
+      <if test="medicare != null" >
+        medicare,
+      </if>
+      <if test="unemploymentinsurance != null" >
+        unemploymentInsurance,
+      </if>
+      <if test="providentfund != null" >
+        providentFund,
+      </if>
+      <if test="membershipfee != null" >
+        membershipFee,
+      </if>
+      <if test="hydropower != null" >
+        hydropower,
+      </if>
+      <if test="error != null" >
+        error,
+      </if>
+      <if test="absence != null" >
+        absence,
+      </if>
+      <if test="othersminusbonus != null" >
+        othersMinusBonus,
+      </if>
+      <if test="tax != null" >
+        tax,
+      </if>
+      <if test="totalminusbonus != null" >
+        totalMinusBonus,
+      </if>
+      <if test="realbonus != null" >
+        realBonus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dd != null" >
+        #{dd,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="oaid != null" >
+        #{oaid,jdbcType=NVARCHAR},
+      </if>
+      <if test="depart != null" >
+        #{depart,jdbcType=NVARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="postbonus != null" >
+        #{postbonus,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="yearsbonus != null" >
+        #{yearsbonus,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="overtimebonus != null" >
+        #{overtimebonus,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="performancebonus != null" >
+        #{performancebonus,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="othersaddbonus != null" >
+        #{othersaddbonus,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="totaladdbonus != null" >
+        #{totaladdbonus,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="socialsecurity != null" >
+        #{socialsecurity,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="medicare != null" >
+        #{medicare,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="unemploymentinsurance != null" >
+        #{unemploymentinsurance,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="providentfund != null" >
+        #{providentfund,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="membershipfee != null" >
+        #{membershipfee,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="hydropower != null" >
+        #{hydropower,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="error != null" >
+        #{error,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="absence != null" >
+        #{absence,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="othersminusbonus != null" >
+        #{othersminusbonus,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="tax != null" >
+        #{tax,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="totalminusbonus != null" >
+        #{totalminusbonus,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="realbonus != null" >
+        #{realbonus,jdbcType=LONGNVARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectInfo" parameterType="map" resultMap="BaseResultMap">
+    SELECT *
+    from performance
+    where dd = #{dd}
+    and name = #{name}
+    and postBonus = #{postbonus}
+  </select>
+  <select id="query" parameterType="map" resultMap="BaseResultMap">
+    select *
+    from performance
+    where dd BETWEEN #{begin} and #{end}
+    and name = #{name}
+  </select>
+</mapper>

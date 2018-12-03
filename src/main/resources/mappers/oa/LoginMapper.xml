@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.management.login.dao.LoginMapper" >
+  <resultMap id="BaseResultMap" type="com.management.login.pojo.Login" >
+    <constructor >
+      <idArg column="id" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="name" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="post" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="pwd" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="postid" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="py" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="pyname" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="id_old" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="ORGANIZATION_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="BK1" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="BK2" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="BK3" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="BK4" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="BK5" jdbcType="NVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, post, pwd, postid, py, pyname, id_old, status, ORGANIZATION_ID, BK1, BK2, 
+    BK3, BK4, BK5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from Login
+    where id = #{id,jdbcType=NVARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from Login
+    where id = #{id,jdbcType=NVARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.management.login.pojo.Login" >
+    insert into Login (id, name, post, 
+      pwd, postid, py, 
+      pyname, id_old, status, 
+      ORGANIZATION_ID, BK1, BK2, 
+      BK3, BK4, BK5)
+    values (#{id,jdbcType=NVARCHAR}, #{name,jdbcType=NVARCHAR}, #{post,jdbcType=NVARCHAR}, 
+      #{pwd,jdbcType=NVARCHAR}, #{postid,jdbcType=NVARCHAR}, #{py,jdbcType=NVARCHAR}, 
+      #{pyname,jdbcType=NVARCHAR}, #{idOld,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR}, 
+      #{organizationId,jdbcType=INTEGER}, #{bk1,jdbcType=NVARCHAR}, #{bk2,jdbcType=NVARCHAR}, 
+      #{bk3,jdbcType=NVARCHAR}, #{bk4,jdbcType=NVARCHAR}, #{bk5,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.management.login.pojo.Login" >
+    insert into Login
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="post != null" >
+        post,
+      </if>
+      <if test="pwd != null" >
+        pwd,
+      </if>
+      <if test="postid != null" >
+        postid,
+      </if>
+      <if test="py != null" >
+        py,
+      </if>
+      <if test="pyname != null" >
+        pyname,
+      </if>
+      <if test="idOld != null" >
+        id_old,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="organizationId != null" >
+        ORGANIZATION_ID,
+      </if>
+      <if test="bk1 != null" >
+        BK1,
+      </if>
+      <if test="bk2 != null" >
+        BK2,
+      </if>
+      <if test="bk3 != null" >
+        BK3,
+      </if>
+      <if test="bk4 != null" >
+        BK4,
+      </if>
+      <if test="bk5 != null" >
+        BK5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=NVARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="post != null" >
+        #{post,jdbcType=NVARCHAR},
+      </if>
+      <if test="pwd != null" >
+        #{pwd,jdbcType=NVARCHAR},
+      </if>
+      <if test="postid != null" >
+        #{postid,jdbcType=NVARCHAR},
+      </if>
+      <if test="py != null" >
+        #{py,jdbcType=NVARCHAR},
+      </if>
+      <if test="pyname != null" >
+        #{pyname,jdbcType=NVARCHAR},
+      </if>
+      <if test="idOld != null" >
+        #{idOld,jdbcType=NVARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=NVARCHAR},
+      </if>
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=INTEGER},
+      </if>
+      <if test="bk1 != null" >
+        #{bk1,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk2 != null" >
+        #{bk2,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk3 != null" >
+        #{bk3,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk4 != null" >
+        #{bk4,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk5 != null" >
+        #{bk5,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.management.login.pojo.Login" >
+    update Login
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="post != null" >
+        post = #{post,jdbcType=NVARCHAR},
+      </if>
+      <if test="pwd != null" >
+        pwd = #{pwd,jdbcType=NVARCHAR},
+      </if>
+      <if test="postid != null" >
+        postid = #{postid,jdbcType=NVARCHAR},
+      </if>
+      <if test="py != null" >
+        py = #{py,jdbcType=NVARCHAR},
+      </if>
+      <if test="pyname != null" >
+        pyname = #{pyname,jdbcType=NVARCHAR},
+      </if>
+      <if test="idOld != null" >
+        id_old = #{idOld,jdbcType=NVARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=NVARCHAR},
+      </if>
+      <if test="organizationId != null" >
+        ORGANIZATION_ID = #{organizationId,jdbcType=INTEGER},
+      </if>
+      <if test="bk1 != null" >
+        BK1 = #{bk1,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk2 != null" >
+        BK2 = #{bk2,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk3 != null" >
+        BK3 = #{bk3,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk4 != null" >
+        BK4 = #{bk4,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk5 != null" >
+        BK5 = #{bk5,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=NVARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.management.login.pojo.Login" >
+    update Login
+    set name = #{name,jdbcType=NVARCHAR},
+      post = #{post,jdbcType=NVARCHAR},
+      pwd = #{pwd,jdbcType=NVARCHAR},
+      postid = #{postid,jdbcType=NVARCHAR},
+      py = #{py,jdbcType=NVARCHAR},
+      pyname = #{pyname,jdbcType=NVARCHAR},
+      id_old = #{idOld,jdbcType=NVARCHAR},
+      status = #{status,jdbcType=NVARCHAR},
+      ORGANIZATION_ID = #{organizationId,jdbcType=INTEGER},
+      BK1 = #{bk1,jdbcType=NVARCHAR},
+      BK2 = #{bk2,jdbcType=NVARCHAR},
+      BK3 = #{bk3,jdbcType=NVARCHAR},
+      BK4 = #{bk4,jdbcType=NVARCHAR},
+      BK5 = #{bk5,jdbcType=NVARCHAR}
+    where id = #{id,jdbcType=NVARCHAR}
+  </update>
+
+
+  <select id="selectByIdAndPassword" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from login where id = #{id} and bk2 = #{pwd}
+  </select>
+
+    <select id="findAll" parameterType="map" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" />
+        from login
+        <where>
+            <if test="id != null ">
+                id = #{id,jdbcType=NVARCHAR}
+            </if>
+            <if test="status != null" >
+                and STATUS = #{status,jdbcType=INTEGER}
+            </if>
+            <if test="name != null" >
+                and name like #{name,jdbcType=INTEGER}
+            </if>
+            <if test="organizationId != null" >
+                and organization_id = #{organizationId,jdbcType=INTEGER}
+            </if>
+            <if test="py != null" >
+                and py = #{py,jdbcType=INTEGER}
+            </if>
+            <if test="pyname != null" >
+                and pyname = #{pyname,jdbcType=INTEGER}
+            </if>
+        </where>
+        order by id
+    </select>
+
+
+  <select id="findByOrganizationIds" parameterType="map" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from login
+    where organization_id in
+    <foreach collection="collection" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    order by id
+  </select>
+
+  <select id="selectUserAndOrgnazizationById" parameterType="string" resultType="com.management.login.vo.UserVo">
+    select a.id,a.name,a.ORGANIZATION_ID as "organizationId",b.NAME as "organizationName"
+    from login a, ORGANIZATION b
+    where a.ORGANIZATION_ID = b.ID
+    and a.id = #{id}
+  </select>
+
+  <select id="selectUserByName" parameterType="string" resultMap="BaseResultMap">
+  select <include refid="Base_Column_List" />
+  from login
+  where NAME = #{name}
+</select>
+
+  <select id="selectUserByIdAndPwd" parameterType="map" resultMap="BaseResultMap" >
+    select <include refid="Base_Column_List" />
+    FROM login
+    where id = #{id}
+    and bk3 = #{pwd}
+  </select>
+  <select id="selectUserByIdAndPwdLike" resultType="com.management.login.pojo.Login">
+    select <include refid="Base_Column_List" />
+    from login
+    where id like #{id} and bk2 = #{pwd}
+  </select>
+
+
+</mapper>

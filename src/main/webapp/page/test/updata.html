@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+</head>
+<body>
+<form id="form1" runat="server">
+
+    <input type="file" accept="image/*" capture="camera" id="imgInp">
+    <!--打开相机-->
+
+    <input type="file" accept="video/*" capture="camcorder" id="imgInp1">
+    <!--打开录像机-->
+    <input type="file" capture="microphone" id="imgInp2">
+    <!--打开录音，苹果不支持，打开的是录像机跟相机，安卓手机支持-->
+    <div>
+        <video id="blah" src="#" alt="显示您上传的商品图片" width="100px" ></video>
+        <img src="#" alt="" id="img" width="100px">
+        <audio controls>
+            <source src="#" id="au">
+            您的浏览器不支持 audio 元素。
+        </audio>
+    </div>
+</form>
+</body>
+<script>
+    window.onload=function () {
+        function readURL(input,target) {
+            if (input.files && input.files[0]) {
+                console.log(input.files)
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    console.log(e.target.result)
+
+                    target.attr('src', e.target.result);
+
+                }
+                reader.readAsDataURL(input.files[0]);
+
+            }
+
+        }
+
+        $("#imgInp").change(function(){
+
+            readURL(this,$("#img"));
+
+        });
+        $("#imgInp1").change(function(){
+
+            readURL(this,$("#blah"));
+
+        });
+        $("#imgInp2").change(function(){
+
+            readURL(this,$("#au"));
+
+        });
+    }
+</script>
+</html>

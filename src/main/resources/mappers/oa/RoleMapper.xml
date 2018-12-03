@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.management.login.dao.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.management.login.pojo.Role" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="name" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="order_by" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bk1" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="bk2" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="bk3" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="bk4" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="bk5" jdbcType="NVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, order_by, bk1, bk2, bk3, bk4, bk5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from Role
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from Role
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.management.login.pojo.Role" >
+    insert into Role (id, name, order_by, 
+      bk1, bk2, bk3, bk4, 
+      bk5)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=NVARCHAR}, #{orderBy,jdbcType=INTEGER}, 
+      #{bk1,jdbcType=NVARCHAR}, #{bk2,jdbcType=NVARCHAR}, #{bk3,jdbcType=NVARCHAR}, #{bk4,jdbcType=NVARCHAR}, 
+      #{bk5,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.management.login.pojo.Role" >
+    insert into Role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="orderBy != null" >
+        order_by,
+      </if>
+      <if test="bk1 != null" >
+        bk1,
+      </if>
+      <if test="bk2 != null" >
+        bk2,
+      </if>
+      <if test="bk3 != null" >
+        bk3,
+      </if>
+      <if test="bk4 != null" >
+        bk4,
+      </if>
+      <if test="bk5 != null" >
+        bk5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="orderBy != null" >
+        #{orderBy,jdbcType=INTEGER},
+      </if>
+      <if test="bk1 != null" >
+        #{bk1,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk2 != null" >
+        #{bk2,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk3 != null" >
+        #{bk3,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk4 != null" >
+        #{bk4,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk5 != null" >
+        #{bk5,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.management.login.pojo.Role" >
+    update Role
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="orderBy != null" >
+        order_by = #{orderBy,jdbcType=INTEGER},
+      </if>
+      <if test="bk1 != null" >
+        bk1 = #{bk1,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk2 != null" >
+        bk2 = #{bk2,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk3 != null" >
+        bk3 = #{bk3,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk4 != null" >
+        bk4 = #{bk4,jdbcType=NVARCHAR},
+      </if>
+      <if test="bk5 != null" >
+        bk5 = #{bk5,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.management.login.pojo.Role" >
+    update Role
+    set name = #{name,jdbcType=NVARCHAR},
+      order_by = #{orderBy,jdbcType=INTEGER},
+      bk1 = #{bk1,jdbcType=NVARCHAR},
+      bk2 = #{bk2,jdbcType=NVARCHAR},
+      bk3 = #{bk3,jdbcType=NVARCHAR},
+      bk4 = #{bk4,jdbcType=NVARCHAR},
+      bk5 = #{bk5,jdbcType=NVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="findAll"  resultMap="BaseResultMap" >
+    select <include refid="Base_Column_List" />
+    from Role
+    <where>
+      <if test="id != null" >
+        and id = #{id}
+      </if>
+      <if test="name != null" >
+        and name = #{name}
+      </if>
+    </where>
+    order by order_by
+  </select>
+  <select id="selectById" resultType="com.management.login.pojo.AuthorityMid" parameterType="integer">
+    select a.accordion_id,a.accordion_name,a.foo_id,b.role_id
+    from accordion a left join (select * from role_accordion a,Role b where a.role_id=b.id and b.id = #{id} ) b on a.accordion_id = b.accordion_id
+    where accordion_flag = 1 and a.accordion_group >=50
+  </select>
+  <select id="selectByName" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from Role
+    where name = #{name}
+  </select>
+  <select id="selectMaxOrderBy" resultType="integer" >
+    select MAX(order_by)
+    from role
+  </select>
+
+</mapper>

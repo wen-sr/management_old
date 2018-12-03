@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设备增加</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../../easyui/themes/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../easyui/themes/mobile.css">
+    <link rel="stylesheet" type="text/css" href="../../easyui/themes/icon.css">
+    <script type="text/javascript" src="../../easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="../../easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../easyui/jquery.easyui.mobile.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+</head>
+<body>
+<h2 align="center" style="color:#3DA0DB">设备登记</h2>
+<div>
+    <form align="center" style="text-align:center;margin: 10px;">
+        <div style="margin-bottom:10px">
+            <input id="add_deviceId" class="easyui-textbox" label="设备编号:"
+                   data-options="
+                   icons: [{
+                        iconCls:'icon-add',
+                        handler:function(){
+                            wx.scanQRCode({
+                            needResult: 1,
+                            desc: 'scanQRCode desc',
+                            success: function (res) {
+                                var url = res.resultStr;
+                                var tempArray = url.split(',');
+                                var tempNum = tempArray[1];
+                                $('#add_deviceId').textbox('setValue', tempNum);
+                            }
+                        });
+                        }
+                    }]"
+                   style="width:100%"/>
+        </div>
+        <div style="margin-bottom:10px">
+            <select type="text" style="width:100%;" id="add_deviceTypeId" class="easyui-combobox"
+                    data-options="url: '/management/deviceType/findAll'
+                                    ,method: 'get'
+                                    ,valueField: 'deviceTypeId'
+                                    ,textField: 'deviceTypeName'
+                                    ,panelWidth: '250'
+                                    ,panelHeight: '100'
+                                    ,label:'设备类型：'">
+            </select>
+        </div>
+        <div style="margin-bottom:10px">
+            <input id="add_specification" class="easyui-textbox" label="规格型号:"
+                   data-options=""
+                   style="width:100%"/>
+        </div>
+        <div style="margin-bottom:20px">
+            <input id="add_organizationId" class="easyui-combotree" style="width:100%;" data-options="url:'/management/organization/findTree?flag=1',method:'get',label:'使用部门：'
+                                ,valueField: 'id'
+                                ,textField: 'name',labelPosition:'left',multiple:false" style="width:300px"/>
+        </div>
+        <div style="margin-bottom:10px">
+            <a href="#" onclick="addInfo()" class="easyui-linkbutton" plain="true" outline="true"
+               style="width:100px;height:35px"><span style="font-size:16px">提交</span></a>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="addDeviceListWeChat_b.js"></script>
+</body>
+</html>

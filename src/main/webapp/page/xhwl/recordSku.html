@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书登记</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../../easyui/themes/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../easyui/themes/mobile.css">
+    <link rel="stylesheet" type="text/css" href="../../easyui/themes/icon.css">
+    <script type="text/javascript" src="../../easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="../../easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../easyui/jquery.easyui.mobile.js"></script>
+</head>
+<body>
+<h2 align="center" style="color:#3DA0DB">图书登记</h2>
+<div>
+    <form align="center" style="text-align:center;margin: 10px;">
+        <div style="margin-bottom:10px">
+            <input id="barcode" class="easyui-textbox" label="条码:" style="width:100%" />
+        </div>
+        <div style="margin-bottom:10px">
+            <input id="descr" class="easyui-textbox" data-options="label:'书名：'"  style="width:100%">
+        </div>
+        <div style="margin-bottom:10px">
+            <input id="price" class="easyui-textbox" data-options="label:'定价：'" style="width:100%">
+        </div>
+        <div style="margin-bottom:10px">
+            <input id="qty" class="easyui-textbox" data-options="label:'册数：'" style="width:100%">
+        </div>
+        <div style="margin-bottom:10px">
+            <a href="#"  onclick="addInfo()" class="easyui-linkbutton" plain="true" outline="true" style="width:100px;height:35px"><span style="font-size:16px">提交</span></a>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="recordSku.js"></script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<head id="Head1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <title>江西蓝海物流</title>
+    <link href="css/home.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css"/>
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="js/util/util.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
+    <script type="text/javascript" src='js/outlook2.js'></script>
+    <style>
+        a{
+            text-decoration:none;
+        }
+        .username{
+            font-size: 18px;
+            line-height: 65px;
+        }
+        frame{
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+
+        //设置登录窗口
+        function openPwd() {
+            $('#w').window({
+                title: '修改密码',
+                width: 300,
+                modal: true,
+                shadow: true,
+                closed: true,
+                height: 200,
+                resizable: false
+            });
+        }
+
+        //关闭登录窗口
+        function closePwd() {
+            $('#w').window('close');
+        }
+
+
+        //修改密码
+        function serverLogin() {
+            var $oldPass = $("#txtOldPass").val();
+            var $newpass = $('#txtNewPass');
+            var $rePass = $('#txtRePass');
+
+
+
+            if ($oldPass == '') {
+                msgShow('系统提示', '请输入旧密码！', 'warning');
+                return false;
+            }
+
+            if ($newpass.val() == '') {
+                msgShow('系统提示', '请输入密码！', 'warning');
+                return false;
+            }
+            if ($rePass.val() == '') {
+                msgShow('系统提示', '请在一次输入密码！', 'warning');
+                return false;
+            }
+
+            if ($newpass.val() != $rePass.val()) {
+                msgShow('系统提示', '两次密码不一至！请重新输入', 'warning');
+                return false;
+            }
+
+            var formData = {
+                "oldPwd"    :    $oldPass,
+                "newPwd"    : $newpass.val()
+            };
+
+            $.ajax({
+                type:'Post',
+                url:'/management/user/modifyPwd',
+                data:formData,
+                dataType:'json',
+                success:function(res){
+                    if(res.status == 0){
+                        $.messager.alert("提示",res.msg,"info",function(){
+                            $('#w').window('close');
+                        });
+                    }else if(res.status == 1) {
+                        $.messager.alert("提示",res.msg,"error");
+                    }else if(res.status == 10){
+                        _util.doLogin();
+                    }
+                },
+                error:function(){
+                    $.messager.alert("提示","数据错误，联系管理员","error");
+                }
+            });
+
+        }
+        
+        $(function () {
+
+            openPwd();
+
+            $('#editpass').click(function () {
+                $('#w').window('open');
+            });
+
+            $('#btnEp').click(function () {
+                serverLogin();
+            })
+
+            $('#btnCancel').click(function () {
+                closePwd();
+            })
+
+        });
+
+        transform_sys = {
+            home : function() {
+                var formData = {
+                    loginSystemFlag : 0
+                }
+                _util.submitGo("/user/getUserInfo", "POST",formData, function(res){
+                    $(".username").text(res.data.organizationName + ":" + res.data.user.name);
+                    InitLeftMenu(res.data.menuList);
+                    $(".home").addClass("currentActive");
+                },function(erro){
+                    window.location.href = _util.getServerUrl('/login.html');
+                })
+            },
+            pallet : function() {
+                var formData = {
+                    loginSystemFlag : 3
+                }
+                _util.submitGo("/user/getUserInfo", "POST",formData, function(res){
+                    $(".username").text(res.data.organizationName + ":" + res.data.user.name);
+                    InitLeftMenu(res.data.menuList);
+                    $(".menu_t ul li:eq(4) a").addClass("currentActive");
+                },function(erro){
+                    window.location.href = _util.getServerUrl('/login.html');
+                })
+            },
+             xin_hua : function() {
+                 var formData = {
+                     loginSystemFlag : 1
+                 }
+                 _util.submitGo("/user/getUserInfo", "POST",formData, function(res){
+                     $(".username").text(res.data.organizationName + ":" + res.data.user.name);
+                     InitLeftMenu(res.data.menuList);
+                 },function(erro){
+                     window.location.href = _util.getServerUrl('/login.html');
+                 })
+             },
+             wcs : function() {
+                 var formData = {
+                     loginSystemFlag : 2
+                 }
+                 _util.submitGo("/user/getUserInfo", "POST",formData, function(res){
+                     $(".username").text(res.data.organizationName + ":" + res.data.user.name);
+                     InitLeftMenu(res.data.menuList);
+                 },function(erro){
+                     window.location.href = _util.getServerUrl('/login.html');
+                 })
+             },
+             tms : function() {
+                 var formData = {
+                     loginSystemFlag : 4
+                 }
+                 _util.submitGo("/user/getUserInfo", "POST",formData, function(res){
+                     $(".username").text(res.data.organizationName + ":" + res.data.user.name);
+                     InitLeftMenu(res.data.menuList);
+                 },function(erro){
+                     window.location.href = _util.getServerUrl('/login.html');
+                 })
+             },
+             report : function() {
+                 var formData = {
+                     loginSystemFlag : 5
+                 }
+                 _util.submitGo("/user/getUserInfo", "POST",formData, function(res){
+                     $(".username").text(res.data.organizationName + ":" + res.data.user.name);
+                     InitLeftMenu(res.data.menuList);
+                 },function(erro){
+                     window.location.href = _util.getServerUrl('/login.html');
+                 })
+             },
+             tech : function() {
+                 var formData = {
+                     loginSystemFlag : 6
+                 }
+                 _util.submitGo("/user/getUserInfo", "POST",formData, function(res){
+                     $(".username").text(res.data.organizationName + ":" + res.data.user.name);
+                     InitLeftMenu(res.data.menuList);
+                 },function(erro){
+                     window.location.href = _util.getServerUrl('/login.html');
+                 })
+             },
+             jiao_cai : function() {
+                 var formData = {
+                     loginSystemFlag : 7
+                 }
+                 _util.submitGo("/user/getUserInfo", "POST",formData, function(res){
+                     $(".username").text(res.data.organizationName + ":" + res.data.user.name);
+                     InitLeftMenu(res.data.menuList);
+                 },function(erro){
+                     window.location.href = _util.getServerUrl('/login.html');
+                 })
+             }
+
+        }
+
+
+    </script>
+
+</head>
+<body class="easyui-layout" style="overflow-y: hidden" scroll="no">
+<noscript>
+    <div style=" position:absolute; z-index:100000; height:2046px;top:0px;left:0px; width:100%; background:white; text-align:center;">
+        <img src="images/noscript.gif" alt='抱歉，请开启脚本支持！'/>
+    </div>
+</noscript>
+<div region="north" id="top" split="true" border="false" style="overflow: hidden; height: 55px;color: #fff; ">
+    <span style="float:right; padding-right:20px;padding-bottom: 0px;" class="head">
+        <i class="fa fa-user-o" style="font-size: 18px;"></i>
+        <span class="username"></span>
+        <span class="">
+			<a href="javascript:void(0);" class="easyui-menubutton" data-options="plain:true,menu:'#set-menu',iconCls:''"><i class="fa fa-cog"></i>我的设置</a>
+			<a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:''" id="logOut"><i class="fa fa-sign-out"></i>退出</a>
+        </span>
+    </span>
+    <span style="float: left">&nbsp;&nbsp;<img src="./image/logo.png" /></span>
+    <div class="menu_t">
+        <ul>
+            <li><a href="javascript:void(0);" onclick="transform_sys.home();" class='home'>主页</a></li>
+            <li><a href="javascript:void(0);" onclick="transform_sys.xin_hua();">新华物流</a></li>
+            <li><a href="javascript:void(0);" onclick="transform_sys.wcs();">WCS系统</a></li>
+            <li><a href="javascript:void(0);" onclick="transform_sys.pallet();">托盘库系统</a></li>
+            <li><a href="javascript:void(0);" onclick="transform_sys.tms();">TMS系统</a></li>
+            <li><a href="javascript:void(0);" onclick="transform_sys.jiao_cai();">教材手工</a></li>
+            <li><a href="javascript:void(0);" onclick="transform_sys.report();">报表系统</a></li>
+            <li><a href="javascript:void(0);" onclick="transform_sys.tech();">技术部</a></li>
+        </ul>
+    </div>
+</div>
+<div id="set-menu" style="width: 100px; display: none;">
+    <div onclick="" id="editpass">修改密码</div>
+</div>
+<div region="south" split="true" style="height: 30px; background: #D2E0F2; ">
+    <div class="footer">@2017 蓝海物流技术部</div>
+</div>
+<div region="west" hide="true" split="true" title="导航菜单" style="width:180px;background: #428fb9;" id="west">
+    <div id="nav" class="easyui-accordion" fit="true" border="false">
+        <!--  导航内容 -->
+
+    </div>
+
+</div>
+<div id="mainPanle" region="center" style="background: #eee; overflow-y:hidden">
+    <div id="tabs" class="easyui-tabs" fit="true" border="false">
+        <div title="欢迎使用" style="margin:0 auto;overflow:hidden; color:red;">
+            <!--<div style="width: 1024px; height: 800px; margin: 200px auto">-->
+                <!--<a href="javascript:void(0);"><div style="width: 200px; height: 300px; background: #e2e2e2;float: left;margin: 0 10px;text-align: center;line-height: 300px;"><span style="font-size: 30px;text-align: center">技术部</span></div></a>-->
+                <!--<a href="javascript:void(0);"><div style="width: 200px; height: 300px; background: #e4b9c0;float: left;margin: 0 10px;text-align: center;line-height: 300px;"><span style="font-size: 30px;">TMS系统</span></div></a>-->
+                <!--<a href="javascript:void(0);"><div style="width: 200px; height: 300px; background: #e4b9c0;float: left;margin: 0 10px;text-align: center;line-height: 300px;"><span style="font-size: 30px;">托盘库WMS</span></div></a>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+
+
+<!--修改密码窗口-->
+<div id="w" class="easyui-window" title="修改密码" collapsible="false" minimizable="false"
+     maximizable="false" icon="icon-save" style="width: 300px; height: 200px; padding: 5px;
+        background: #fafafa;">
+    <div class="easyui-layout" fit="true">
+        <div region="center" border="false" style="padding: 10px;background: #fff; border: 1px solid #ccc;">
+            <table cellpadding=3>
+                <tr>
+                    <td>原密码：</td>
+                    <td><input id="txtOldPass" type="Password" class="txt01"/></td>
+                </tr>
+                <tr>
+                    <td>新密码：</td>
+                    <td><input id="txtNewPass" type="Password" class="txt01"/></td>
+                </tr>
+                <tr>
+                    <td>确认密码：</td>
+                    <td><input id="txtRePass" type="Password" class="txt01"/></td>
+                </tr>
+            </table>
+        </div>
+        <div region="south" border="false" style="text-align: center; height: 30px; line-height: 30px;">
+            <a id="btnEp" class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">
+                确定</a> <a id="btnCancel" class="easyui-linkbutton" icon="icon-cancel" href="javascript:void(0)">取消</a>
+        </div>
+    </div>
+</div>
+
+<div id="mm" class="easyui-menu" style="width:150px;">
+    <div id="mm-tabupdate">刷新</div>
+    <div class="menu-sep"></div>
+    <div id="mm-tabclose">关闭</div>
+    <div id="mm-tabcloseall">全部关闭</div>
+    <div id="mm-tabcloseother">除此之外全部关闭</div>
+    <div class="menu-sep"></div>
+    <div id="mm-tabcloseright">当前页右侧全部关闭</div>
+    <div id="mm-tabcloseleft">当前页左侧全部关闭</div>
+    <div class="menu-sep"></div>
+    <div id="mm-exit">退出</div>
+</div>
+
+
+</body>
+</html>

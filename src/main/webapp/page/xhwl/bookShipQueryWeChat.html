@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>一般图书发货物流信息查询</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../../easyui/themes/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../easyui/themes/mobile.css">
+    <link rel="stylesheet" type="text/css" href="../../easyui/themes/icon.css">
+    <script type="text/javascript" src="../../easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="../../easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../easyui/jquery.easyui.mobile.js"></script>
+</head>
+<body>
+<h2 align="center" style="color:#3DA0DB">一般图书发货物流信息查询</h2>
+<div>
+    <form align="center" style="text-align:center;margin: 10px;">
+        <div style="margin-bottom:10px">
+            <input id="shipkey" class="easyui-textbox" label="运&nbsp;&nbsp;号:"
+                   data-options=""
+                   style="width:100%" />
+        </div>
+        <div style="margin-bottom:10px">
+            <input id="caseid"  style="width:100%;" class="easyui-textbox" data-options="label:'包件号：'">
+        </div>
+        <div style="margin-bottom:10px">
+            <select id="status"  style="width:100%;" class="easyui-combobox" data-options="label:'状态：',editable:false">
+                <option value="">-- 请选择包件状态 --</option>
+                <option value="-1">包装完成</option>
+                <option value="1">待发</option>
+                <option value="2">待运</option>
+                <option value="8">装车</option>
+                <option value="11">发运</option>
+            </select>
+        </div>
+        <div style="margin-bottom:10px">
+            <a href="#"  onclick="query()" class="easyui-linkbutton" plain="true" outline="true" style="width:100px;height:35px"><span style="font-size:16px">提交</span></a>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="bookShipQueryWeChat.js"></script>
+</body>
+</html>

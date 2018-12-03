@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.management.wechat.dao.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.management.wechat.pojo.UserInfo" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="openid" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="subscribe" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="subscribeTime" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="nickname" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="sex" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="country" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="province" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="city" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="language" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="headImgUrl" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="remark" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="groupid" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="login_id" jdbcType="NVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, openid, subscribe, subscribeTime, nickname, sex, country, province, city, language, 
+    headImgUrl, remark, groupid, login_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from userInfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from userInfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.management.wechat.pojo.UserInfo" >
+    insert into userInfo (id, openid, subscribe, 
+      subscribeTime, nickname, sex, 
+      country, province, city, 
+      language, headImgUrl, remark, 
+      groupid, login_id)
+    values (#{id,jdbcType=INTEGER}, #{openid,jdbcType=NVARCHAR}, #{subscribe,jdbcType=INTEGER}, 
+      #{subscribetime,jdbcType=BIGINT}, #{nickname,jdbcType=NVARCHAR}, #{sex,jdbcType=INTEGER}, 
+      #{country,jdbcType=NVARCHAR}, #{province,jdbcType=NVARCHAR}, #{city,jdbcType=NVARCHAR}, 
+      #{language,jdbcType=NVARCHAR}, #{headimgurl,jdbcType=NVARCHAR}, #{remark,jdbcType=NVARCHAR}, 
+      #{groupid,jdbcType=NVARCHAR}, #{loginId,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.management.wechat.pojo.UserInfo" >
+    insert into userInfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="subscribe != null" >
+        subscribe,
+      </if>
+      <if test="subscribetime != null" >
+        subscribeTime,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="language != null" >
+        language,
+      </if>
+      <if test="headimgurl != null" >
+        headImgUrl,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="groupid != null" >
+        groupid,
+      </if>
+      <if test="loginId != null" >
+        login_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=NVARCHAR},
+      </if>
+      <if test="subscribe != null" >
+        #{subscribe,jdbcType=INTEGER},
+      </if>
+      <if test="subscribetime != null" >
+        #{subscribetime,jdbcType=BIGINT},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=NVARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=NVARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=NVARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=NVARCHAR},
+      </if>
+      <if test="language != null" >
+        #{language,jdbcType=NVARCHAR},
+      </if>
+      <if test="headimgurl != null" >
+        #{headimgurl,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=NVARCHAR},
+      </if>
+      <if test="loginId != null" >
+        #{loginId,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.management.wechat.pojo.UserInfo" >
+    update userInfo
+    <set >
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=NVARCHAR},
+      </if>
+      <if test="subscribe != null" >
+        subscribe = #{subscribe,jdbcType=INTEGER},
+      </if>
+      <if test="subscribetime != null" >
+        subscribeTime = #{subscribetime,jdbcType=BIGINT},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=NVARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=NVARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=NVARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=NVARCHAR},
+      </if>
+      <if test="language != null" >
+        language = #{language,jdbcType=NVARCHAR},
+      </if>
+      <if test="headimgurl != null" >
+        headImgUrl = #{headimgurl,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="groupid != null" >
+        groupid = #{groupid,jdbcType=NVARCHAR},
+      </if>
+      <if test="loginId != null" >
+        login_id = #{loginId,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.management.wechat.pojo.UserInfo" >
+    update userInfo
+    set openid = #{openid,jdbcType=NVARCHAR},
+      subscribe = #{subscribe,jdbcType=INTEGER},
+      subscribeTime = #{subscribetime,jdbcType=BIGINT},
+      nickname = #{nickname,jdbcType=NVARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      country = #{country,jdbcType=NVARCHAR},
+      province = #{province,jdbcType=NVARCHAR},
+      city = #{city,jdbcType=NVARCHAR},
+      language = #{language,jdbcType=NVARCHAR},
+      headImgUrl = #{headimgurl,jdbcType=NVARCHAR},
+      remark = #{remark,jdbcType=NVARCHAR},
+      groupid = #{groupid,jdbcType=NVARCHAR},
+      login_id = #{loginId,jdbcType=NVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByOpenId" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from userInfo
+    where openid = #{openid}
+  </select>
+
+  <select id="selectByLoginIds" resultType="com.management.wechat.pojo.UserInfo">
+    select b.openid as "openid",b.login_id as "loginId"
+    from role_login a, userInfo b
+    where a.login_id = b.login_id and  a.role_id in
+    <foreach collection="roleIds" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+  <select id="selectUserByName" parameterType="string" resultType="com.management.wechat.pojo.UserInfo">
+    select b.id as "id", openid, subscribe, subscribeTime, nickname, sex, country, province, city, language, headImgUrl, remark, groupid, login_id as "loginId"
+    FROM login a, userinfo b
+    where a.id = b.login_id
+    and a.name = #{name}
+  </select>
+  <select id="selectByLoginId" resultType="com.management.wechat.pojo.UserInfo">
+    select <include refid="Base_Column_List" />
+    FROM userinfo
+    where login_id = #{login_id}
+  </select>
+</mapper>

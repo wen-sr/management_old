@@ -1,0 +1,129 @@
+<!DOCTYPE>
+<html>
+<head>
+    <base href="<%=basePath%>">
+
+    <title>故障申报</title>
+
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <!--
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">-->
+    <link rel="stylesheet" type="text/css" href="../../easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../easyui/themes/icon.css">
+
+    <script type="text/javascript" src="../../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../easyui/locale/easyui-lang-zh_CN.js"></script>
+
+</head>
+
+<body>
+<div align="center">
+    <h2 style="color:#0078CA;font-size: 20px;">维修管理</h2>
+</div>
+<!-- 数据显示 -->
+<div align="center" style="height:760px;">
+    <table id="data" class="easyui-datagrid" data-options="">
+    </table>
+</div>
+<!-- 增加 -->
+<div id="w-addInfo" class="easyui-window" title="添加报修单"
+     data-options="modal:false,closed:true,iconCls:'icon-save'"
+     style="width: 700px; height: 400px; padding: 10px;">
+    <form id="addform" align="center" style="text-align:center;margin: 10px;line-height: 41px;">
+        <h2>添加报修单</h2>
+        <table id="formtable" border="0px" align="center" cellpadding='2' width="100%">
+            <tr>
+                <td>设备编号:</td>
+                <td><select style="width:150px;" class="easyui-combobox" id="add_deviceId" data-options="url: '/management/deviceList/findAll'
+                    ,method: 'get'
+                    ,valueField: 'deviceId'
+                    ,textField: 'deviceId'
+                    ,panelWidth: 150
+                    ,panelHeight: '100' " ></select></td>
+            </tr>
+            <tr>
+                <td>故障描述：</td>
+                <td><input id="add_questionDescription" class="easyui-textbox" data-options="multiline:true" style="width:300px;height:100px">
+                </td>
+            </tr>
+            <tr>
+                <td colspan='2' align="center">&nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="addInfo()" class="easyui-linkbutton" plain="true" outline="true"
+                       style="width:100px;height:35px"><span style="font-size:16px">提交</span></a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<!-- 修改 -->
+<div id="w-editInfo" class="easyui-window" title="修改报修单"
+     data-options="modal:false,closed:true,iconCls:'icon-save'"
+     style="width: 500px; height: 500px; padding: 10px;">
+    <form id="f-editInfo" method="post">
+        <input type="hidden" id="edit_id" />
+        <div style="margin-bottom:20px">
+            <select class="easyui-combobox" id="edit_deviceTypeId" style="width:100%" data-options="label:'设备类型:',required:true, url: '/management/deviceType/findAll'
+                                ,method: 'get'
+                                ,valueField: 'deviceTypeId'
+                                ,textField: 'deviceTypeName'
+                                ,panelWidth: '150'
+                                ,panelHeight: '100'
+                                ,label:'设备类型：'"></select>
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" id="edit_deviceId" style="width:100%" data-options="label:'设备编号:',required:true,readonly:true">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" id="edit_cause" style="width:100%;" data-options="label:'故障原因:',required:true">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" id="edit_component" style="width:100%;" data-options="label:'更换零部件:',required:true">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" id="edit_cost" style="width:100%;" data-options="label:'维修费用:',required:true">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" id="edit_result" style="width:100%;" data-options="label:'维修结果:',required:true">
+        </div>
+    </form>
+    <div style="text-align:center;padding:5px 0">
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="editInfo(2)" style="width:80px">提交</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="editInfo(4)" style="width:80px">维修完成</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="editInfo(3)" style="width:80px">报废</a>
+    </div>
+</div>
+<!-- 工具栏 -->
+<div id="tb" style="text-align:center;display: none">
+    <select id="status" class="easyui-combobox" style="width:80px;height: auto;">
+        <option value="">-- 所有 --</option>
+        <option value="2">维修中</option>
+        <option value="4">已维修</option>
+    </select>
+    设备类型：<input type="text" style="width:100px" id="deviceTypeId" class="easyui-combobox"
+                data-options="url: '/management/deviceType/findAll'
+                                ,method: 'get'
+                                ,valueField: 'deviceTypeId'
+                                ,textField: 'deviceTypeName'
+                                ,panelWidth: 100
+                                ,panelHeight: '100' "/>
+    设备编号：<input class="easyui-textbox" id="deviceId" style="width:150px">
+    使用部门：<select id="organizationId" class="easyui-combotree" data-options="url:'/management/organization/findTree',method:'get',label:''
+                                ,valueField: 'id'
+                                ,textField: 'name',labelPosition:'left',multiple:false" style="width:150px" >
+             </select>
+    <a class="easyui-linkbutton" iconCls="icon-search" onclick="queryInfo()">查询</a>
+    <a class="easyui-linkbutton" iconCls="icon-add" onClick="tool.add();">添加</a>
+    <a class="easyui-linkbutton" iconCls="icon-edit" onClick="tool.edit();">修改</a>
+    <a class="easyui-linkbutton" iconCls="icon-remove" onClick="tool.remove();">删除</a>
+</div>
+<script type="text/javascript" src="repairManage.js"></script>
+</body>
+</html>

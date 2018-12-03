@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>用户总数--layui后台管理模板</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="../../layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all"/>
+    <link rel="stylesheet" href="../../css/user.css" media="all"/>
+    <style rel="stylesheet">
+        .layui-table-view{
+            margin:0;
+        }
+        .layui-elem-quote{
+            padding:2px;
+        }
+        .layui-elem-quote{
+            margin-bottom: 0;
+        }
+    </style>
+
+
+</head>
+<body class="childrenBody" >
+<div class="layui-elem-quote news_search">
+
+    <div class="layui-inline">
+        <div class="layui-input-inline">
+            <label class="layui-form-label" style="width: auto">设备编号</label>
+        </div>
+        <div class="layui-input-inline">
+            <input type="text" id="deviceId" value="" placeholder="请输入设备编号" class="layui-input search_input">
+        </div>
+        <select id="status" name="type" class="layui-select">
+            <option value="">-- 设备状态 --</option>
+            <option value="0">领用</option>
+            <option value="1">归还</option>
+            <option value="2">维修</option>
+        </select>
+        <select id="organizationId" name="type" class="layui-select" lay-filter="getUser">
+            <script id="userIdOptions" type="text/x-handlebars-template">
+                <option value="">-- 领用者 --</option>
+                {{#each this}}
+                <option value="{{deviceUserId}}">{{deviceUserName}}</option>
+                {{/each}}
+            </script>
+        </select>
+        <a class="layui-btn search_btn" id="go">查询</a>
+    </div>
+</div>
+<div class="layui-form users_list">
+    <table id="data">
+
+    </table>
+</div>
+<script type="text/javascript" src="../../js/util/util.js"></script>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="device.js"></script>
+<script type="text/javascript" src="../../layui/layui.all.js"></script>
+<script src="../../js/handlebars-v4.0.10.js"></script>
+<script type="text/javascript" src="query.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.management.device.dao.DeviceStatusMapper" >
+  <resultMap id="BaseResultMap" type="com.management.device.pojo.DeviceStatus" >
+    <constructor >
+      <idArg column="DEVICE_ID" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="DEVICE_TYPE_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="DEVICE_TYPE_NAME" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="DEVICE_USER_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="DEVICE_USER_NAME" jdbcType="NVARCHAR" javaType="java.lang.String" />
+      <arg column="STATUS" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ADDDATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="EDITDATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    DEVICE_ID, DEVICE_TYPE_ID, DEVICE_TYPE_NAME, DEVICE_USER_ID, DEVICE_USER_NAME, STATUS, 
+    ADDDATE, EDITDATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from DEVICE_STATUS
+    where DEVICE_ID = #{deviceId,jdbcType=NVARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from DEVICE_STATUS
+    where DEVICE_ID = #{deviceId,jdbcType=NVARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.management.device.pojo.DeviceStatus" >
+    insert into DEVICE_STATUS (DEVICE_ID, DEVICE_TYPE_ID, DEVICE_TYPE_NAME, 
+      DEVICE_USER_ID, DEVICE_USER_NAME, STATUS, 
+      ADDDATE, EDITDATE)
+    values (#{deviceId,jdbcType=NVARCHAR}, #{deviceTypeId,jdbcType=INTEGER}, #{deviceTypeName,jdbcType=NVARCHAR}, 
+      #{deviceUserId,jdbcType=INTEGER}, #{deviceUserName,jdbcType=NVARCHAR}, #{status,jdbcType=INTEGER}, 
+      getdate(), getdate())
+  </insert>
+  <insert id="insertSelective" parameterType="com.management.device.pojo.DeviceStatus" >
+    insert into DEVICE_STATUS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deviceId != null" >
+        DEVICE_ID,
+      </if>
+      <if test="deviceTypeId != null" >
+        DEVICE_TYPE_ID,
+      </if>
+      <if test="deviceTypeName != null" >
+        DEVICE_TYPE_NAME,
+      </if>
+      <if test="deviceUserId != null" >
+        DEVICE_USER_ID,
+      </if>
+      <if test="deviceUserName != null" >
+        DEVICE_USER_NAME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="1 == 1" >
+        ADDDATE,
+      </if>
+      <if test="1 == 1" >
+        EDITDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deviceId != null" >
+        #{deviceId,jdbcType=NVARCHAR},
+      </if>
+      <if test="deviceTypeId != null" >
+        #{deviceTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="deviceTypeName != null" >
+        #{deviceTypeName,jdbcType=NVARCHAR},
+      </if>
+      <if test="deviceUserId != null" >
+        #{deviceUserId,jdbcType=INTEGER},
+      </if>
+      <if test="deviceUserName != null" >
+        #{deviceUserName,jdbcType=NVARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="1 == 1" >
+        getdate(),
+      </if>
+      <if test="1 == 1" >
+        getdate(),
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.management.device.pojo.DeviceStatus" >
+    update DEVICE_STATUS
+    <set >
+      <if test="deviceTypeId != null" >
+        DEVICE_TYPE_ID = #{deviceTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="deviceTypeName != null" >
+        DEVICE_TYPE_NAME = #{deviceTypeName,jdbcType=NVARCHAR},
+      </if>
+      <if test="deviceUserId != null" >
+        DEVICE_USER_ID = #{deviceUserId,jdbcType=INTEGER},
+      </if>
+      <if test="deviceUserName != null" >
+        DEVICE_USER_NAME = #{deviceUserName,jdbcType=NVARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="adddate != null" >
+        ADDDATE = #{adddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="1 == 1" >
+        EDITDATE = getdate(),
+      </if>
+    </set>
+    where DEVICE_ID = #{deviceId,jdbcType=NVARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.management.device.pojo.DeviceStatus" >
+    update DEVICE_STATUS
+    set DEVICE_TYPE_ID = #{deviceTypeId,jdbcType=INTEGER},
+      DEVICE_TYPE_NAME = #{deviceTypeName,jdbcType=NVARCHAR},
+      DEVICE_USER_ID = #{deviceUserId,jdbcType=INTEGER},
+      DEVICE_USER_NAME = #{deviceUserName,jdbcType=NVARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      ADDDATE = #{adddate,jdbcType=TIMESTAMP},
+      EDITDATE = getdate()
+    where DEVICE_ID = #{deviceId,jdbcType=NVARCHAR}
+  </update>
+
+  <select id="findAll" parameterType="map" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List" />
+      from DEVICE_STATUS
+    <where>
+      <if test="deviceId != null ">
+        device_id = #{deviceId,jdbcType=NVARCHAR}
+      </if>
+      <if test="status != null" >
+        and STATUS = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="deviceUserId != null" >
+        and DEVICE_USER_ID = #{deviceUserId,jdbcType=INTEGER}
+      </if>
+    </where>
+    order by DEVICE_ID
+  </select>
+</mapper>
