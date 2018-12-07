@@ -31,7 +31,7 @@ public class DeviceRepairController
             deviceRepair.setDeviceUserId(user.getId());
             return this.deviceRepairService.addRepair(deviceRepair);
         }
-        return ServerResponse.createByErrorMessage("����������");
+        return ServerResponse.createByErrorMessage("??????????");
     }
 
     @RequestMapping({"/editRepair"})
@@ -42,12 +42,12 @@ public class DeviceRepairController
         {
             if ((deviceRepair.getStatus() == Constant.DeviceRepairEnum.SCRAPPED.getCode()) &&
                     (!isAllow(user, 3))) {
-                return ServerResponse.createByErrorCodeMessage(ResponseCode.NO_AUTHORITY.getCode(), "����������������������");
+                return ServerResponse.createByErrorCodeMessage(ResponseCode.NO_AUTHORITY.getCode(), "??????????????????????");
             }
             deviceRepair.setRepairUserId(user.getId());
             return this.deviceRepairService.editRepair(deviceRepair);
         }
-        return ServerResponse.createByErrorMessage("����������");
+        return ServerResponse.createByErrorMessage("??????????");
     }
 
     @RequestMapping({"/findAll"})

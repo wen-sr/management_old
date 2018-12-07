@@ -211,7 +211,7 @@
   </update>
 
 
-  <select id="selectByIdAndPassword" resultMap="BaseResultMap">
+  <select id="selectByIdAndPassword" parameterType="map" resultMap="BaseResultMap">
     select <include refid="Base_Column_List" />
     from login where id = #{id} and bk2 = #{pwd}
   </select>
@@ -270,7 +270,7 @@
     select <include refid="Base_Column_List" />
     FROM login
     where id = #{id}
-    and bk3 = #{pwd}
+    and bk2 = #{pwd}
   </select>
   <select id="selectUserByIdAndPwdLike" resultType="com.management.login.pojo.Login">
     select <include refid="Base_Column_List" />
