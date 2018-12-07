@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>路顺库作业产量</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.timers-1.2.js"></script>
+    <script type="text/javascript" src="lushun.js"></script>
+    <style type="text/css">
+        td{
+            padding:1px;
+            border-bottom:1px solid red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div><a href="#" onclick="one()">页1</a><a href="#" onclick="two()">页2</a><a href="#" onclick="three()">页3</a><a href="#" onclick="four()">页4</a><a href="#" onclick="five()">页5</a></div>
+        <div id="header" style="background-color: black;font-family: 'Adobe 宋体 Std L';color: red;width: 512px; height: 30px; padding:0 20px;padding-top: 20px;">
+            <span style="font-size: 23px;font-weight: normal;padding-left: 130px;">路顺库作业产量</span><span id='Timer' style="font-size: 16px;padding-left: 20px;"></span>
+        </div>
+        <div id="one" style="background-color: black;color: red;font-size: 18px;font-family: 'Adobe 宋体 Std L';width: 512px; height: 256px;padding:0 20px;padding-bottom: 20px; ">
+            <table id='t1' cellpadding='0' cellspacing='0' style='font-size: 18px;width: 100%;font-weight:normal;border-spacing:0px 1.5px;'>
+                <tr><td colspan="2">入库总包件数</td><td colspan="2">出库总包件数</td></tr>
+                <tr><td colspan="2">107</td><td colspan="2">310</td></tr>
+                <tr><td>周转箱入库</td><td>托盘入库</td><td>周转箱出库</td><td>托盘出库数</td></tr>
+                <tr><td>103</td><td>4</td><td>120</td><td>190</td></tr>
+                <tr><td colspan="2">装车数</td><td colspan="2">发运数</td></tr>
+                <tr><td colspan="2">310</td><td colspan="2">310</td></tr>
+            </table>
+        </div>
+        <div id="two" style="background-color: black;color: red;font-size: 18px;font-family: 'Adobe 宋体 Std L';width: 512px; height: 256px; padding:0 20px;padding-bottom: 20px;display: none"></div>
+        <div id="three" style="background-color: black;color: red;font-size: 18px;font-family: 'Adobe 宋体 Std L';width: 512px; height: 256px; padding:0 20px;padding-bottom: 20px;display: none"></div>
+        <div id="four" style="background-color: black;color: red;font-size: 18px;font-family: 'Adobe 宋体 Std L';width: 512px; padding:0 20px;padding-bottom: 20px; height: 256px;display: none"></div>
+        <div id="five" style="background-color: black;color: red;font-size: 18px;font-family: 'Adobe 宋体 Std L';width: 512px; padding:0 20px;padding-bottom: 20px; height: 256px;display: none"></div>
+    </div>
+
+</body>
+</html>
