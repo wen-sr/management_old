@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.management.prd1.dao.TaskViewMapper" >
+  <resultMap id="BaseResultMap" type="com.management.prd1.pojo.TaskView" >
+    <constructor >
+      <arg column="TASKTYPE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CONT_NO" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CREATE_DATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="ZT" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="RETCODE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="RETTIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="SENDCODE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SENDTIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.management.prd1.pojo.TaskView" >
+    insert into V_TASKVIEW (TASKTYPE, CONT_NO, CREATE_DATE, 
+      ZT, RETCODE, RETTIME, 
+      SENDCODE, SENDTIME)
+    values (#{tasktype,jdbcType=VARCHAR}, #{contNo,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{zt,jdbcType=CHAR}, #{retcode,jdbcType=VARCHAR}, #{rettime,jdbcType=TIMESTAMP}, 
+      #{sendcode,jdbcType=VARCHAR}, #{sendtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.management.prd1.pojo.TaskView" >
+    insert into V_TASKVIEW
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tasktype != null" >
+        TASKTYPE,
+      </if>
+      <if test="contNo != null" >
+        CONT_NO,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="zt != null" >
+        ZT,
+      </if>
+      <if test="retcode != null" >
+        RETCODE,
+      </if>
+      <if test="rettime != null" >
+        RETTIME,
+      </if>
+      <if test="sendcode != null" >
+        SENDCODE,
+      </if>
+      <if test="sendtime != null" >
+        SENDTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tasktype != null" >
+        #{tasktype,jdbcType=VARCHAR},
+      </if>
+      <if test="contNo != null" >
+        #{contNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zt != null" >
+        #{zt,jdbcType=CHAR},
+      </if>
+      <if test="retcode != null" >
+        #{retcode,jdbcType=VARCHAR},
+      </if>
+      <if test="rettime != null" >
+        #{rettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendcode != null" >
+        #{sendcode,jdbcType=VARCHAR},
+      </if>
+      <if test="sendtime != null" >
+        #{sendtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+    <select id="getData" parameterType="com.management.prd1.dto.TaskViewDto" resultType="com.management.prd1.dto.TaskViewDto">
+      select TASKTYPE, CONT_NO contNo, to_char(CREATE_DATE,'yyyy-mm-dd hh24:mi:ss') createDate,ZT, retcode,to_char(RETTIME,'yyyy-mm-dd hh24:mi:ss')  rettime,sendcode, to_char(SENDTIME,'yyyy-mm-dd hh24:mi:ss') sendtime
+      from V_TASKVIEW
+      where 1 =1
+      <if test="tasktype != null" >
+        and tasktype = #{tasktype,jdbcType=VARCHAR}
+      </if>
+      <if test="contNo != null" >
+        and cont_no = #{contNo,jdbcType=VARCHAR}
+      </if>
+      <if test="createDate != null" >
+        and to_char(create_date,'yyyy-mm-dd') = #{createDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="zt != null" >
+        and zt = #{zt,jdbcType=CHAR}
+      </if>
+    order by 3
+    </select>
+</mapper>

@@ -73,7 +73,7 @@
         <!--<table tableName="DEVICE_USERS" domainObjectName="DeviceUsers" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
         <!--<table tableName="DEVICE_STATUS" domainObjectName="DeviceStatus" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
         <!--<table tableName="DEVICE_LIST" domainObjectName="DeviceList" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <table tableName="packBatchno" domainObjectName="PackBatchno" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="v_taskview" domainObjectName="TaskView" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 
         <!-- geelynote mybatis插件的搭建 -->
     </context>

@@ -110,7 +110,16 @@
         <property name="dataSource" ref="dataSource_xh"/>
         <!-- 指定mybatis 的配置文件 -->
         <!--<property name ="configLocation" value= "classpath:mybatis-config.xml" />-->
-        <property name="mapperLocations" value="classpath*:mappers/**/*Mapper.xml"></property>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath*:mappers/device/**/*.xml</value>
+                <value>classpath*:mappers/infor/**/*.xml</value>
+                <value>classpath*:mappers/oa/**/*.xml</value>
+                <value>classpath*:mappers/xh/**/*.xml</value>
+                <value>classpath*:mappers/xhwl/**/*.xml</value>
+                <value>classpath*:mappers/wechat/**/*.xml</value>
+            </list>
+        </property>
 
         <!-- 分页插件 -->
         <property name="plugins">
