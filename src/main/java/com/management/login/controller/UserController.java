@@ -199,25 +199,25 @@ public class UserController extends BaseCotroller {
         List<Map<String,String>> targetCookies = new ArrayList<Map<String,String>>();
         // 向其他服务器发送增加cookie
         Map<String,String> targetCookiea = new HashMap<String,String>();
-        String url_pallet = "http://141.168.45.110:8081/ncsmwcs/addCookie";
+        String url_pallet = "http://141.168.1.108:8081/ncsmwcs/addCookie";
         targetCookiea.put("targetUrl", url_pallet);
         targetCookiea.put("cookieName", Constant.USERID);
         targetCookiea.put("cookieValue", user.getId());
         targetCookies.add(targetCookiea);
 
-        Map<String,String> targetCookieb = new HashMap<String,String>();
-        String url_jiaocai = "http://141.168.1.188:8080/jxxhwl/addCookie";
-        targetCookieb.put("targetUrl", url_jiaocai);
-        targetCookieb.put("cookieName", Constant.USERID);
-        targetCookieb.put("cookieValue", user.getId());
-        targetCookies.add(targetCookieb);
+//        Map<String,String> targetCookieb = new HashMap<String,String>();
+//        String url_jiaocai = "http://141.168.1.188:8080/jxxhwl/addCookie";
+//        targetCookieb.put("targetUrl", url_jiaocai);
+//        targetCookieb.put("cookieName", Constant.USERID);
+//        targetCookieb.put("cookieValue", user.getId());
+//        targetCookies.add(targetCookieb);
 
-        Map<String,String> targetCookiec = new HashMap<String,String>();
-        String url_jiaocai_139 = "http://141.168.1.188:8080/jxxhwl/addCookie";
-        targetCookiec.put("targetUrl", url_jiaocai_139);
-        targetCookiec.put("cookieName", Constant.USERID);
-        targetCookiec.put("cookieValue", user.getId());
-        targetCookies.add(targetCookiec);
+//        Map<String,String> targetCookiec = new HashMap<String,String>();
+//        String url_jiaocai_139 = "http://141.168.1.188:8080/jxxhwl/addCookie";
+//        targetCookiec.put("targetUrl", url_jiaocai_139);
+//        targetCookiec.put("cookieName", Constant.USERID);
+//        targetCookiec.put("cookieValue", user.getId());
+//        targetCookies.add(targetCookiec);
 
         return targetCookies;
     }

@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ServerResponse<List> login(Login user) {
-        Login login = loginMapper.selectByIdAndPassword(user.getId(),MD5Util.MD5EncodeUtf8(user.getPwd()));
+        Login login = loginMapper.selectUserByIdAndPwd(user.getId(),MD5Util.MD5EncodeUtf8(user.getPwd()));
         if(login != null){
             login.setPwd(null);
             List<Object> data = new ArrayList<>();

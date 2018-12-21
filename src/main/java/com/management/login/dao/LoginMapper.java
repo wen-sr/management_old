@@ -20,7 +20,7 @@ public interface LoginMapper {
 
     int updateByPrimaryKey(Login record);
 
-    Login selectByIdAndPassword(@Param(value = "id") String id, @Param(value = "pwd") String pwd);
+//    Login selectByIdAndPassword(@Param(value = "id") String id, @Param(value = "pwd") String pwd);
 
     List<Login> findAll(Login user);
 
